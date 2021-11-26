@@ -24,7 +24,16 @@ const HomeProductContainer = (): JSX.Element => {
   const handleSubmitForm = (event: FormEvent) => {
     event.preventDefault();
     const id = Math.random().toString();
-  }
+
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/.test(email)) {
+      // return failtToast("Informe email válido exemplo@mail.com");
+    }
+    // setLoginAuthentication({ id: id, name: name, email: email, loging: true});
+    // if(!/^.{8,}/.test(name)) {
+    //   return failtToast('Sua senha deve conter 8 caracteres ou mais')
+    // }
+    // successToast("Usuário logado!") && setTimeout(() => router.push("/"), 2000);
+  };
 
   const handleInputValidations = () => {};
 
