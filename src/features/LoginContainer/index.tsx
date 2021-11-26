@@ -24,7 +24,7 @@ const HomeProductContainer = (): JSX.Element => {
   const handleSubmitForm = (event: FormEvent) => {
     event.preventDefault();
     const id = Math.random().toString();
-
+  }
 
   const handleInputValidations = () => {};
 
@@ -32,9 +32,24 @@ const HomeProductContainer = (): JSX.Element => {
   return (
     <>
       <LoginMainContainer>
-        <h1>page product</h1>
+        <LoginCartContent>
+          <div>LOGIN</div>
+          <form onSubmit={handleSubmitForm}>
+            <LoginInputContent>
+             
+              <p>christian-daniel04@hotmail.com</p>
+            </LoginInputContent>
+            <LoginButtonContent>
+              {/* <Button>ENTRAR</Button> */}
+              <Button type="submit">CRIAR CONTA</Button>
+              {/* <Button onClick={() => handleSubmitForm()}>CRIAR CONTA</Button> */}
+            </LoginButtonContent>
+          </form>
+        </LoginCartContent>
+        {/* <ToastContainer autoClose={5000} position="bottom-center" /> */}
       </LoginMainContainer>
     </>
   );
 };
-export default HomeProductContainer;
+
+export default HomeProductContainer
