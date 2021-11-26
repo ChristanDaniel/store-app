@@ -36,7 +36,16 @@ const HomeProductContainer = (): JSX.Element => {
           <div>LOGIN</div>
           <form onSubmit={handleSubmitForm}>
             <LoginInputContent>
-             
+              <input
+                placeholder="NAME"
+                onChange={(event) => setName(event.target.value)}
+                value={name}
+              />
+              <input
+                placeholder="E-Mail"
+                onChange={(event) => setEmail(event.target.value)}
+                value={email}
+              />
               <p>christian-daniel04@hotmail.com</p>
             </LoginInputContent>
             <LoginButtonContent>
