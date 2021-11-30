@@ -1,5 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
+
+import { AiFillCreditCard } from "react-icons/ai";
+import { FaBarcode } from "react-icons/fa";
+
+import {
+  MainCartProducts,
+  MainContentCartProducts,
+  SectionPaymentCartContainer,
+  DeliveryCepContainer,
+  PaymenteContainer,
+  ProductCartContainer,
+  AsidePaymentCartContainer,
+} from "./styles";
 import axios from "axios";
 
 interface ProductProps {
