@@ -29,6 +29,23 @@ const ProductContainerContext = createContext({} as IProductContainerProps);
 
 const ProductContainerProvider: React.FC = ({ children }) => {
 
+  const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
+
+  const contextValue = useMemo(() => {
+    return { state, dispatch };
+  }, [state, dispatch]);
+
+
+  // useEffect(() => {
+  //   setLoginAuthentication(LoginFromStorage)
+  // }, [loginAuthentication]);
+
+  useEffect(() => {
+    if (state !== initialState) {
+      localStorage.setItem("state", JSON.stringify(state));
+    }
+
+  }, [state, teste]);
 
   return (
     <ProductContainerContext.Provider
