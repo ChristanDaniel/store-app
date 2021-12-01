@@ -23,11 +23,31 @@ interface ProductProps {
   count: number
 }
 
-interface IProductContainerProps {}
+interface LoginAuthenticationProps {
+  id?: string
+  name?: string
+  email?: string
+  loging: boolean
+}
+
+
+interface IProductContainerProps {
+  loginAuthentication: LoginAuthenticationProps
+  setLoginAuthentication: React.Dispatch<React.SetStateAction<LoginAuthenticationProps>>
+}
+
+let LoginFromStorage: LoginAuthenticationProps
+
+if (process.browser) {
+  const loginHasStorage = localStorage.getItem('authentication')
+  LoginFromStorage = loginHasStorage ? JSON.parse(loginHasStorage) : []
+}
+
 
 const ProductContainerContext = createContext({} as IProductContainerProps);
 
 const ProductContainerProvider: React.FC = ({ children }) => {
+  const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
 
   const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
 
@@ -49,7 +69,10 @@ const ProductContainerProvider: React.FC = ({ children }) => {
 
   return (
     <ProductContainerContext.Provider
-      value={{}}>
+      value={{
+        loginAuthentication,
+        setLoginAuthentication,
+      }}>
       {children}
     </ProductContainerContext.Provider>
   );
