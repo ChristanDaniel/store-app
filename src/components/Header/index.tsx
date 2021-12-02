@@ -12,7 +12,7 @@ interface HeaderProps {
   onOpenModalCart: () => void
 }
 
-const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
+const Header = (): JSX.Element => {
   return (
     <>
       <Headers>
@@ -26,7 +26,7 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
             <GiCharacter /> Conta{" "}
           </p>
 
-          <button onClick={() => onOpenModalCart()}>
+          <button>
             <BsCart3 />
           </button>
         </div>
