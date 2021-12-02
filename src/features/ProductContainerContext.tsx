@@ -34,6 +34,11 @@ interface LoginAuthenticationProps {
 interface IProductContainerProps {
   loginAuthentication: LoginAuthenticationProps
   setLoginAuthentication: React.Dispatch<React.SetStateAction<LoginAuthenticationProps>>
+
+  getAllProducts: (credentials?: ProductProps[]) => Promise<void>;
+  products: ProductProps[];
+  setProducs: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+
 }
 
 let LoginFromStorage: LoginAuthenticationProps
@@ -48,6 +53,7 @@ const ProductContainerContext = createContext({} as IProductContainerProps);
 
 const ProductContainerProvider: React.FC = ({ children }) => {
   const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
+  const [products, setProducs] = useState<ProductProps[]>([]);
 
   const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
 
@@ -64,14 +70,23 @@ const ProductContainerProvider: React.FC = ({ children }) => {
     if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
     }
-
   }, [state, teste]);
+
+
+  const getAllProducts = async () => {
+    const response = await axios.get("https://fakestoreapi.com/products");
+    console.log(response)
+    setProducs(response.data);
+  };
 
   return (
     <ProductContainerContext.Provider
       value={{
         loginAuthentication,
         setLoginAuthentication,
+        getAllProducts,
+        products,
+        setProducs,
       }}>
       {children}
     </ProductContainerContext.Provider>
