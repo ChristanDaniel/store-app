@@ -47,5 +47,37 @@ const Headers = styled.header`
 
 `
 
+const ButtonCartFavorite = styled.button`
+  position: relative;
+  display: flex;
+  text-transform: capitalize;
+  /* text-decoration: none; */
+  align-self: center;
+  font-size: 14px;
+  height: 30px;
 
-export { Headers }
+  background: transparent;
+  /* color: #737380; */
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+
+  margin-left: 5px;
+
+  cursor: pointer;
+  border: 0;
+
+  transition: 0.2s;
+
+  :hover {
+    filter: brightness(0.9);
+  }
+
+  svg {
+    color: #3498db;
+    height: 20px;
+    width: 20px;
+  }
+`;
+export { Headers, ButtonCartFavorite }
