@@ -22,10 +22,35 @@ const Header = (): JSX.Element => {
         </h1>
 
         <div >
-          <p onClick={() => router.push("/login")}>
-            <GiCharacter /> Conta{" "}
-          </p>
-
+        {loginAuthentication.loging ? (
+            <>
+              {/* <Image src={AvatarMale} alt="Fechar Modal" /> */}
+              <UserContentFromHeader>
+                <FaUserCircle />
+                <div>
+                  <p>{loginAuthentication.name}</p>
+                  <span>{loginAuthentication.email}</span>
+                </div>
+              </UserContentFromHeader>
+              <ButtonCartFavorite onClick={() => setMouseOver(true)}>
+                {mouseOver === true ? (
+                  <UserMouverOver>
+                    <p><AiOutlineUser /> Minha Conta</p>
+                    <p><AiFillQuestionCircle /> Central de Atendimento </p>
+                    <p><RiLogoutBoxRLine /> SAIR </p>
+                  </UserMouverOver>
+                ) : (
+                  <></>
+                )}
+                <IoIosArrowDown />
+                <button  onClick={() => handleLogout()}>asd</button>
+              </ButtonCartFavorite>
+            </>
+          ) : (
+            <UserContent onClick={() => router.push("/login")}>
+              <FiUser /> Conta{" "}
+            </UserContent>
+          )}
           <ButtonCartFavorite onClick={() => onOpenModalCart()}>
             <BsCart3 />
             {teste.length === 0 ? (
