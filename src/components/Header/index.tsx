@@ -26,9 +26,14 @@ const Header = (): JSX.Element => {
             <GiCharacter /> Conta{" "}
           </p>
 
-          <button>
+          <ButtonCartFavorite onClick={() => onOpenModalCart()}>
             <BsCart3 />
-          </button>
+            {teste.length === 0 ? (
+              <></>
+            ) : (
+              <NumberCartFavorite>{teste.length}</NumberCartFavorite>
+            )}
+          </ButtonCartFavorite>
         </div>
       </Headers>
     </>
