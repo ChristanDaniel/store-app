@@ -47,6 +47,31 @@ const Headers = styled.header`
 
 `
 
+const UserContentFromHeader = styled.div`
+  display: flex;
+
+  div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  svg {
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+  span {
+    color: #909090;
+    font-size: 12px;
+  }
+`;
+
 const ButtonCartFavorite = styled.button`
   position: relative;
   display: flex;
