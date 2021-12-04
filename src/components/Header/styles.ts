@@ -1,9 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Headers = styled.header`
-  background-color: #121214;
+  /* position: fixed;
+  top: 0%;
+  width: 100%; */
+  background-color: #2d2d2d;
   height: 5rem;
-  color: #FFFFFF;
+  color: #ffffff;
 
   display: flex;
   align-items: center;
@@ -11,7 +14,7 @@ const Headers = styled.header`
 
   padding: 2rem 10rem;
 
-  border-bottom: 1px solid #3498db;
+  border-bottom: 3px solid #3498db;
 
   h1 {
     margin-left: 2rem;
@@ -22,30 +25,51 @@ const Headers = styled.header`
   span {
     color: #3498db;
   }
+`;
 
-  div {
-    display: flex;
+const UserContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    background: transparent;
+    color: #fff;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
 
-    p {
-      padding-right: 28px;
-      /* padding-left: 18px; */
-      border-right: 1px solid #3498db;
-    }
+    margin-left: 5px;
 
-    button {
-      svg {
-        margin-left: 28px;
-        color: #3498db;
-        height: 20px;
-        width: 20px;
-      }
+    cursor: pointer;
+    border: 0;
 
+    transition: 0.2s;
+
+    :hover {
+      filter: brightness(0.9);
     }
   }
+`;
 
-`
+const ButtonArrowUser = styled.button``;
+
+const UserContent = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 19px;
+  /* padding-left: 18px; */
+  border-right: 1px solid #3498db;
+  cursor: pointer;
+
+  svg {
+    color: #3498db;
+    height: 18px;
+    width: 18px;
+  }
+`;
 
 const UserContentFromHeader = styled.div`
   display: flex;
@@ -72,7 +96,12 @@ const UserContentFromHeader = styled.div`
   }
 `;
 
-const ButtonCartFavorite = styled.button`
+const BorderLeft = styled.div`
+  height: 35px;
+  border-right: 1px solid #3498db;
+`;
+
+const ButtonCartFavorite = styled.div`
   position: relative;
   display: flex;
   text-transform: capitalize;
@@ -86,7 +115,7 @@ const ButtonCartFavorite = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
 
   margin-left: 5px;
 
@@ -94,15 +123,43 @@ const ButtonCartFavorite = styled.button`
   border: 0;
 
   transition: 0.2s;
-
+  /*
   :hover {
     filter: brightness(0.9);
   }
+  border-right: 3px solid #3498db; */
 
-  svg {
+  > svg {
     color: #3498db;
     height: 20px;
     width: 20px;
   }
 `;
-export { Headers, ButtonCartFavorite }
+
+
+const SvgHeader = styled.div`
+  display: flex;
+  align-items: center;
+
+  h1 {
+    cursor: pointer;
+  }
+
+  svg {
+    height: 50px;
+    width: 50px;
+  }
+`;
+
+export {
+  Headers,
+  UserContainer,
+  UserContent,
+  UserContentFromHeader,
+  ButtonCartFavorite,
+  UserMouverOver,
+  BorderLeft,
+  ButtonArrowUser,
+  NumberCartFavorite,
+  SvgHeader,
+};
