@@ -135,7 +135,48 @@ const ButtonCartFavorite = styled.div`
     width: 20px;
   }
 `;
+const NumberCartFavorite = styled.p`
+  position: absolute;
+  font-size: 12px;
+  top: 16px;
+  left: 24px;
+  color: #fff;
+  background: tomato;
+  border-radius: 20px;
+  padding: 1px 3.5px 1px 3.5px;
+`;
+const UserMouverOver = styled.div`
+  position: absolute;
+  display: flex;
+  padding-left: 14px;
+  flex-direction: column;
+  top: 45px;
+  height: 120px;
+  width: 200px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
 
+  button {
+    transition: 0.2s;
+
+    :hover {
+      filter: brightness(0.5);
+    }
+    color: #3498db;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px;
+    padding-top: 13px;
+
+    svg {
+      margin-right: 4px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+`;
 
 const SvgHeader = styled.div`
   display: flex;
