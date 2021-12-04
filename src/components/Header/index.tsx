@@ -1,28 +1,60 @@
-import React from "react";
-import { BsCart3 } from "react-icons/Bs";
-import { GiCharacter } from "react-icons/gi";
+import React, { useContext, useState } from "react";
+import { BsCart3 } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { FiUser } from "react-icons/fi";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { AiFillQuestionCircle, AiOutlineUser } from "react-icons/ai";
+import { GiShop } from "react-icons/gi";
 
-import { Headers } from "./styles";
+import Image from "next/image";
+import AvatarMale from "../../../public/male.svg";
 
-// import Image from "next/image";
-// import profilePic from "../../../public/headerLogo.svg";
+import {
+  Headers,
+  UserContainer,
+  UserContent,
+  UserContentFromHeader,
+  ButtonArrowUser,
+  UserMouverOver,
+  BorderLeft,
+  ButtonCartFavorite,
+  NumberCartFavorite,
+  SvgHeader,
+} from "./styles";
+
 import router from "next/dist/client/router";
+import { ProductContainerContext } from "../../features/ProductContainerContext";
 
 interface HeaderProps {
-  onOpenModalCart: () => void
+  onOpenModalCart: () => void;
 }
 
-const Header = (): JSX.Element => {
+const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
+  const { teste, loginAuthentication, setLoginAuthentication } = useContext(
+    ProductContainerContext
+  );
+  const [renderiza, setRenderiza] = useState(true);
+  const [mouseOver, setMouseOver] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("authentication");
+    setLoginAuthentication({ id: "", email: "", name: "", loging: false });
+
+    setRenderiza(!renderiza);
+  };
+
   return (
     <>
       <Headers>
-        {/* <Image src={profilePic} alt="logo" width={50} height={50} /> */}
-        <h1 onClick={() => router.push("/")}>
-          Ig<span>.</span>Store
-        </h1>
-
-        <div >
-        {loginAuthentication.loging ? (
+        <SvgHeader>
+          <GiShop />
+          <h1 onClick={() => router.push("/")}>
+            Ig<span>.</span>Store
+          </h1>
+        </SvgHeader>
+        <UserContainer>
+          {loginAuthentication.loging ? (
             <>
               {/* <Image src={AvatarMale} alt="Fechar Modal" /> */}
               <UserContentFromHeader>
@@ -32,18 +64,27 @@ const Header = (): JSX.Element => {
                   <span>{loginAuthentication.email}</span>
                 </div>
               </UserContentFromHeader>
-              <ButtonCartFavorite onClick={() => setMouseOver(true)}>
+              <ButtonCartFavorite
+                onClick={() => {
+                  setMouseOver(!mouseOver);
+                }}
+              >
                 {mouseOver === true ? (
                   <UserMouverOver>
-                    <p><AiOutlineUser /> Minha Conta</p>
-                    <p><AiFillQuestionCircle /> Central de Atendimento </p>
-                    <p><RiLogoutBoxRLine /> SAIR </p>
+                    <button>
+                      <AiOutlineUser /> Minha Conta
+                    </button>
+                    <button>
+                      <AiFillQuestionCircle /> Central de Atendimento{" "}
+                    </button>
+                    <button onClick={() => handleLogout()}>
+                      <RiLogoutBoxRLine /> SAIR{" "}
+                    </button>
                   </UserMouverOver>
                 ) : (
                   <></>
                 )}
                 <IoIosArrowDown />
-                <button  onClick={() => handleLogout()}>asd</button>
               </ButtonCartFavorite>
             </>
           ) : (
@@ -51,6 +92,8 @@ const Header = (): JSX.Element => {
               <FiUser /> Conta{" "}
             </UserContent>
           )}
+
+          <BorderLeft />
           <ButtonCartFavorite onClick={() => onOpenModalCart()}>
             <BsCart3 />
             {teste.length === 0 ? (
@@ -59,7 +102,7 @@ const Header = (): JSX.Element => {
               <NumberCartFavorite>{teste.length}</NumberCartFavorite>
             )}
           </ButtonCartFavorite>
-        </div>
+        </UserContainer>
       </Headers>
     </>
   );
