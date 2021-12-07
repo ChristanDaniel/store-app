@@ -1,19 +1,23 @@
 import Modal from "react-modal";
-
 import {
   ModalContainer,
   HeadModalContent,
   BodyModalContent,
+  ProductDivContent,
   AmountProductContent,
+  FooterModalContent
 } from "./styles";
+
+import { IoMdTrash } from "react-icons/io";
+import { CgTrashEmpty } from "react-icons/cg";
 
 import Image from "next/image";
 import closeImg from "../../../public/close.svg";
 
-import { IoMdTrash } from "react-icons/io";
-import { useContext, useState } from "react";
+import { useRouter } from "next/dist/client/router";
+import { useContext, useEffect, useState } from "react";
 import { ProductContainerContext } from "../../features/ProductContainerContext";
-
+import Button from "../Button";
 
 interface OpenModalFavoriteCartProps {
   isOpen: boolean;
@@ -32,9 +36,14 @@ export function OpenModalFavoriteCart({
   isOpen,
   onRequestClose,
 }: OpenModalFavoriteCartProps) {
+  const router = useRouter();
   const { contextValue, teste, setTeste } = useContext(ProductContainerContext);
+  const [Prod, setProd] = useState<number>(0);
   const [renderiza, setRenderiza] = useState(true);
 
+  const getValue = () => {};
+
+  const { state, dispatch } = contextValue;
 
   const handleCleanAll = () => {
     localStorage.removeItem("state");
@@ -43,6 +52,31 @@ export function OpenModalFavoriteCart({
     setRenderiza(!renderiza);
   };
 
+  const DeleteProductFavoriteCart = (index: number) => {
+    const { state } = contextValue;
+
+    if (index > -1) {
+      state.splice(index, 1);
+    }
+
+    localStorage.setItem("state", JSON.stringify(state));
+    setRenderiza(!renderiza);
+  };
+
+  const FormatedFavoriteCartValues = (products: ProductProps[]) => {
+    return products.reduce((a, b) => a + b.price, 0);
+  };
+
+  const handleCompleteOrder = (onRequestClose: () => void) => {
+    router.push("/Cart");
+    onRequestClose();
+  };
+
+  useEffect(() => {
+    const { state } = contextValue;
+    console.log("DENTRO DO EFFECT", state);
+    setTeste(state);
+  }, [contextValue, setTeste]);
 
   return (
     <Modal
