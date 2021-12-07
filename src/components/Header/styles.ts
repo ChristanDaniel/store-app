@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 const Headers = styled.header`
-  /* position: fixed;
+  position: fixed;
+  z-index: 1;
   top: 0%;
-  width: 100%; */
+  width: 100%;
+  margin-bottom: 80px;
   background-color: #2d2d2d;
   height: 5rem;
   color: #ffffff;
@@ -15,6 +17,8 @@ const Headers = styled.header`
   padding: 2rem 10rem;
 
   border-bottom: 3px solid #3498db;
+  -webkit-box-shadow: -1px -3px 11px 2px rgba(0,0,0,0.24);
+  box-shadow: -1px -3px 11px 2px rgba(0,0,0,0.24);
 
   h1 {
     margin-left: 2rem;
@@ -60,8 +64,6 @@ const UserContent = styled.p`
   align-items: center;
   gap: 4px;
   padding-right: 19px;
-  /* padding-left: 18px; */
-  border-right: 1px solid #3498db;
   cursor: pointer;
 
   svg {
@@ -123,11 +125,6 @@ const ButtonCartFavorite = styled.div`
   border: 0;
 
   transition: 0.2s;
-  /*
-  :hover {
-    filter: brightness(0.9);
-  }
-  border-right: 3px solid #3498db; */
 
   > svg {
     color: #3498db;
