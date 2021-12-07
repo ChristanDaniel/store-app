@@ -56,7 +56,25 @@ export function Footers(): JSX.Element {
           </h1>
         </Security>
       </SecurityAndPayment>
+      <SocialsRede>
+        <Link href="https://github.com/ChristanDaniel" passHref>
+          <a target="_blank">
+            <FaGithubSquare id="social-icon" />
+          </a>
+        </Link>
 
+        <Link href="https://www.linkedin.com/in/christian-daniel-841921210/" passHref>
+          <a target="_blank">
+            <FaLinkedin id="social-icon" />
+          </a>
+        </Link>
+
+        <Link href="https://facebook.com/" passHref>
+          <a target="_blank">
+            <FaFacebookSquare id="social-icon" />
+          </a>
+        </Link>
+      </SocialsRede>
     </Footer>
   );
 }
