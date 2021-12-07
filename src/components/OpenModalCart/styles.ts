@@ -49,11 +49,42 @@ const BodyModalContent = styled.div`
   }
 `;
 
-const ProductDivContent = styled.div``;
+const ProductDivContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #3498db;
+  margin-top: 20px;
+`;
 
-const AmountProductContent = styled.div``;
+const AmountProductContent = styled.div`
+  display: flex;
 
-const FooterModalContent = styled.div``;
+  button {
+    display: flex;
+    align-items: center;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+`;
+
+const FooterModalContent = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+
+  div {
+    margin: 10px;
+
+    p {
+      color: #006400;
+    }
+  }
+`;
 
 export {
   ModalContainer,
