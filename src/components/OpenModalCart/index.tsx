@@ -59,14 +59,43 @@ export function OpenModalFavoriteCart({
       >
         <Image src={closeImg} alt="Fechar Modal" />
       </button>
-
-      <HeadModalContent>
+      <ModalContainer>
+        <HeadModalContent>
           <h3>Meu Carrinho</h3>
           <button onClick={() => handleCleanAll()}>
-          <IoMdTrash /> Remover Tudo
+            <IoMdTrash /> Remover Tudo
           </button>
         </HeadModalContent>
-
+        <BodyModalContent>
+          {teste && teste?.map((test, index) => {
+            return (
+              <>
+                <ProductDivContent key={test.id + index}>
+                  <h4>{test.title}</h4>
+                  <AmountProductContent>
+                    {/* <p>Quantidade</p>
+                    <p>{test.count}</p> */}
+                    <button onClick={() => DeleteProductFavoriteCart(index)}>
+                      <CgTrashEmpty />
+                      Remover
+                    </button>
+                    <p>R$ {test.price.toFixed(2)}</p>
+                  </AmountProductContent>
+                </ProductDivContent>
+              </>
+            );
+          })}
+        </BodyModalContent>
+        <FooterModalContent>
+          <div>
+            <h5>Valor Total</h5>
+            <p>R$ {FormatedFavoriteCartValues(teste).toFixed(2)}</p>
+          </div>
+          <Button onClick={() => handleCompleteOrder(onRequestClose)}>
+            Finalizar Pedido
+          </Button>
+        </FooterModalContent>
+      </ModalContainer>
     </Modal>
   );
 }
