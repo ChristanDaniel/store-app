@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LoginMainContainer = styled.main`
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 80px);
   align-items: center;
   justify-content: center;
 `;
@@ -10,6 +10,9 @@ const LoginMainContainer = styled.main`
 const LoginInputContent = styled.div`
   display: flex;
   flex-direction: column;
+  div {
+    margin-bottom: 8px;
+  }
 `
 
 const LoginButtonContent = styled.div`
@@ -18,6 +21,7 @@ const LoginButtonContent = styled.div`
 
 const LoginCartContent = styled.div`
   display: flex;
+
 `
 
 
