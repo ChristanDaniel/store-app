@@ -22,6 +22,20 @@ const Buttons = styled.button<StyledButtonProps>`
 
   transition: 0.2s;
 
+  :hover {
+    ${(props) => {
+      if (!props.$disabled) {
+        return `filter: brightness(0.9);`;
+      }
+    }}
+  }
+
+  svg {
+    margin-right: 3px;
+    margin-left: 3px;
+    height: 18px;
+    width: 18px;
+  }
 `;
 
 export { Buttons };
