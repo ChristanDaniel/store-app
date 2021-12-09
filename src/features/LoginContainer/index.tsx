@@ -42,29 +42,23 @@ const HomeProductContainer = (): JSX.Element => {
     <>
       <LoginMainContainer>
         <LoginCartContent>
-          <div>LOGIN</div>
           <form onSubmit={handleSubmitForm}>
             <LoginInputContent>
-              <input
-                placeholder="NAME"
-                onChange={(event) => setName(event.target.value)}
-                value={name}
-              />
-              <input
-                placeholder="E-Mail"
-                onChange={(event) => setEmail(event.target.value)}
-                value={email}
-              />
+
+              <div>
+              <TextField id="text-field" label="Name" variant="outlined" value={name} onChange={(event) => setName(event.target.value)} />
+                </div>
+                <div>
+              <TextField id="text-field" label="E-mail" variant="outlined" value={email} onChange={(event) => setEmail(event.target.value)} />
+              </div>
               <p>christian-daniel04@hotmail.com</p>
             </LoginInputContent>
             <LoginButtonContent>
-              {/* <Button>ENTRAR</Button> */}
               <Button type="submit">CRIAR CONTA</Button>
-              {/* <Button onClick={() => handleSubmitForm()}>CRIAR CONTA</Button> */}
             </LoginButtonContent>
           </form>
         </LoginCartContent>
-        {/* <ToastContainer autoClose={5000} position="bottom-center" /> */}
+        <ToastContainer autoClose={5000} position="bottom-center" />
       </LoginMainContainer>
     </>
   );
