@@ -15,32 +15,48 @@ const MainContainer = styled.main`
 
 const Banner = styled.img`
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
+  border-top: 2.5px solid #3498db;
+  border-bottom: 5px solid #3498db;
 
-  /* height: 208px;
-  width: 1200px; */
-`
+  height: 208px;
+  width: 100%;
+`;
 
 const MainContent = styled.main`
   width: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   margin: 45px;
-  gap: 30px;
+  gap: 20px;
 `;
 
 const MainContentDiv = styled.div`
   display: flex;
-  width: 300px;
+  width: 250px;
   flex-direction: column;
-  padding: 70px 30px;
-  border: 1px solid #3498db;
+  padding: 24px 18px;
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
-
+  justify-content: space-between;
 
   img {
-    height: 232px;
-    width: 232px;
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 190px;
+    width: 190px;
+  }
+
+  h3 {
+    color: #3a383e;
+    margin-top: 6px;
+    font-size: 14px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 `;
 
