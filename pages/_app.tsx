@@ -1,7 +1,7 @@
+import type { AppProps } from 'next/app'
 import { GlobalStyle } from '../styles/globals'
 import '../styles/Global'
 
-import type { AppProps } from 'next/app'
 
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
