@@ -53,7 +53,17 @@ const HomeContainer = (): JSX.Element => {
       });
   };
 
+  const FormatedValues = (ind: string, value: number) => {
+    if (ind === "desconto") {
+      const num = value * 0.9;
+      return num.toFixed(2);
+    }
 
+    if (ind === "dividido") {
+      const num = value / 3;
+      return num.toFixed(2);
+    }
+  };
 
   return (
     <>
