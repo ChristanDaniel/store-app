@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useReducer,
 } from "react";
+import { initialState } from "./CartReducer";
 
 interface ProductProps {
   category?: string;
@@ -39,6 +40,16 @@ interface IProductContainerProps {
   products: ProductProps[];
   setProducs: React.Dispatch<React.SetStateAction<ProductProps[]>>;
 
+  teste: ProductProps[];
+  setTeste: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+
+}
+
+let questionsFromStorage: ProductProps[]
+
+if (process.browser) {
+  const hasStorage = localStorage.getItem('state')
+  questionsFromStorage = hasStorage ? JSON.parse(hasStorage) : []
 }
 
 let LoginFromStorage: LoginAuthenticationProps
@@ -48,12 +59,12 @@ if (process.browser) {
   LoginFromStorage = loginHasStorage ? JSON.parse(loginHasStorage) : []
 }
 
-
 const ProductContainerContext = createContext({} as IProductContainerProps);
 
 const ProductContainerProvider: React.FC = ({ children }) => {
   const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
   const [products, setProducs] = useState<ProductProps[]>([]);
+  const [teste, setTeste] = useState<ProductProps[]>([]);
 
   const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
 
@@ -69,6 +80,8 @@ const ProductContainerProvider: React.FC = ({ children }) => {
   useEffect(() => {
     if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
+    } else {
+      localStorage.setItem("state", JSON.stringify(['']));
     }
   }, [state, teste]);
 
@@ -87,6 +100,8 @@ const ProductContainerProvider: React.FC = ({ children }) => {
         getAllProducts,
         products,
         setProducs,
+        teste,
+        setTeste,
       }}>
       {children}
     </ProductContainerContext.Provider>
