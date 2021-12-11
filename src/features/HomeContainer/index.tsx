@@ -24,12 +24,36 @@ interface ProductProps {
 }
 
 const HomeContainer = (): JSX.Element => {
-  const [teste, setTeste] = useState('')
+  const router = useRouter();
+  const { products, contextValue, loginAuthentication } = useContext(
+    ProductContainerContext
+  );
 
-  const { products } = useContext(ProductContainerContext)
-  const router = useRouter()
+  const handleCheckIfHasOnCart = (productId: number) => {
+    const hasProduct = Boolean(
+      contextValue.state.find((prod) => prod.id === productId)
+    );
 
-  useEffect(() => {}, [])
+    console.log("hasProduct", hasProduct);
+    return hasProduct;
+  };
+
+  const handleAddCart = (product: ProductProps) => {
+    const hasProduct = handleCheckIfHasOnCart(product.id);
+
+    !hasProduct &&
+      contextValue.dispatch({
+        type: "add_product",
+
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        count: 1,
+      });
+  };
+
+
 
   return (
     <>
