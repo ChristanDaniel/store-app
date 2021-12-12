@@ -10,3 +10,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Next.js](https://nextjs.org/) <img align='left' alt='Next' width='31px' src="https://assets.vercel.com/image/upload/v1607554385/repositories/next-js/next-logo.png"/>
 
 - [TypeScript](https://www.typescriptlang.org/) <img align='left' alt='TypeScript' width='35px' src="https://img.icons8.com/color/48/000000/typescript.png"/>
+
+- [Styled-Components](https://styled-components.com/) <img align='left' alt="styled-components" width='35px' src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" />
+
+## 🔗 Como executar
+
+- Clone o repositório
+- Instale as dependências com `yarn install`
+- Inicie o servidor com `yarn dev`
+
+Tudo Pronto? Agora é só acessar [`localhost:3000`](http://localhost:3000) do seu navegador.
