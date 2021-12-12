@@ -2,10 +2,24 @@
 import axios from 'axios'
 import { useRouter } from 'next/dist/client/router'
 import React, { useContext, useEffect, useState } from 'react'
+import Button from '../../components/Button'
 import { Footers } from '../../components/Footers'
 import { ProductContainerContext } from '../ProductContainerContext'
 
-import { MainContainer, Banner, MainContent, MainContentDiv } from './styles'
+import { BsCartCheckFill } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
+import { CgDetailsMore } from "react-icons/cg";
+
+import {
+  MainContainer,
+  Banner,
+  MainContent,
+  MainContentDiv,
+  InstallmentAmount,
+  ButtonContainerBuy,
+  ProdPriceValue,
+  ProdPriceValueSpan,
+} from "./styles";
 
 interface ProductProps {
   category?: string

@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
-const MainContainer = styled.main`
-  height: calc(100vh - 80px);
-  width: 100%;
-  display: flex;
-  /* margin: 80px; */
-  flex-direction: column;
-
-  span {
-    color: #737380;
-    /* text-decoration: line-through; */
-  }
-`;
+const MainContainer = styled.main``;
 
 const Banner = styled.img`
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
@@ -36,6 +25,7 @@ const MainContentDiv = styled.div`
   width: 250px;
   flex-direction: column;
   padding: 24px 18px;
+  /* border: 1px solid #3498db; */
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
   justify-content: space-between;
 
@@ -60,4 +50,42 @@ const MainContentDiv = styled.div`
   }
 `;
 
-export { MainContainer, Banner, MainContent, MainContentDiv };
+const ProdPriceValueSpan = styled.span`
+  font-size: 14px;
+  margin-top: 12px;
+  color: #737380;
+  text-decoration: line-through;
+`;
+
+const ProdPriceValue = styled.h2`
+  color: #006400;
+
+  span {
+    font-size: 12px;
+  }
+`;
+
+const InstallmentAmount = styled.p`
+  color: #ff5510;
+  font-size: 14px;
+`;
+
+const ButtonContainerBuy = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    /* margin-left: 6px; */
+  }
+`;
+
+export {
+  MainContainer,
+  Banner,
+  MainContent,
+  MainContentDiv,
+  ProdPriceValue,
+  ProdPriceValueSpan,
+  InstallmentAmount,
+  ButtonContainerBuy,
+};
