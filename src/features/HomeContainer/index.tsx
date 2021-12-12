@@ -68,21 +68,45 @@ const HomeContainer = (): JSX.Element => {
   return (
     <>
       <MainContainer>
-        <Banner src="https://img.terabyteshop.com.br/banner/1200.jpg" alt="teste" />
+        <Banner
+          src="https://img.terabyteshop.com.br/banner/1200.jpg"
+          alt="teste"
+        />
         <MainContent>
           {products.map((product, index) => {
             return (
               <MainContentDiv key={product.id + index}>
-                <img src={`${product.image}`} alt="Mouse" />
+                <img src={`${product.image}`} alt={`${product.title}`} />
 
-                {/* <button onClick={() => handleAddCart(product)}>Adicionar no Carrinho</button> */}
                 <h3>{product.title}</h3>
-                <span>${product.price}</span>
-                <p>{product.price}</p>
-                <p>ou até 6x de R$ 50,00</p>
-                <button onClick={() => router.push(`/Product/${product.id}`)}>Comprar Agora</button>
+                <ProdPriceValueSpan>
+                  de R$ {product.price.toFixed(2)} por
+                </ProdPriceValueSpan>
+                <ProdPriceValue>
+                  R$ {FormatedValues("desconto", product.price)}{" "}
+                  <span>à vista no boleto</span>
+                </ProdPriceValue>
+                <InstallmentAmount>
+                  ou até 3x de R$ {FormatedValues("dividido", product.price)}
+                </InstallmentAmount>
+                <ButtonContainerBuy>
+                  <Button onClick={() => router.push(`/Product/${product.id}`)}>
+                    <CgDetailsMore /> Ver detalhes
+                  </Button>
+
+                  <Button
+                    onClick={() => handleAddCart(product)}
+                    $disabled={handleCheckIfHasOnCart(product.id)}
+                  >
+                    {handleCheckIfHasOnCart(product.id) ? (
+                      <BsCartCheckFill />
+                    ) : (
+                      <BsCart3 />
+                    )}
+                  </Button>
+                </ButtonContainerBuy>
               </MainContentDiv>
-            )
+            );
           })}
         </MainContent>
         <Footers />
