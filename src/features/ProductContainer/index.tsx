@@ -51,6 +51,7 @@ const HomeProductContainer = (): JSX.Element => {
           <hr />
         </GeneralInfo>
 
+        {Product ? (
           <ProductInfo>
             <ProductDescription>
               <h3>{Product?.title}</h3>
@@ -70,13 +71,36 @@ const HomeProductContainer = (): JSX.Element => {
                 {FormatedValues("dividido", Product?.price)} sem juros no
                 cartão.
               </ProductInstallments>
-
+              <ProductCodeValue>
+                R$ {FormatedValues("desconto", Product?.price)}
+              </ProductCodeValue>
+              <ProductCode>
+                <FaBarcode /> à vista com 10% de desconto no boleto ou pix
+              </ProductCode>
+              <Button
+                $disabled={handleCheckIfHasOnCart(Product.id)}
+                onClick={() => handleAddCart(Product)}
+              >
+                {handleCheckIfHasOnCart(Product.id)
+                  ? "Produto adicionado ao carrinho"
+                  : "Comprar Agora"}
+              </Button>
             </ProductDescription>
             <ProductImage>
               <img src={`${Product?.image}`} alt={`${Product?.description}`} />
             </ProductImage>
           </ProductInfo>
+        ) : (
+          <>
+            <ProgressContainer>
+              <div>
+                <CircularProgress />
+              </div>
+            </ProgressContainer>
+          </>
+        )}
 
+        <Footers />
       </MainProductContainer>
     </>
   );
