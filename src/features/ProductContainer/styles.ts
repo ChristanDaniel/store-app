@@ -59,4 +59,54 @@ const ProductInstallments = styled.p`
   }
 `;
 
-export { MainProductContainer };
+const ProductCodeValue = styled.h1`
+  margin-top: 32px;
+  color: #006400;
+  display: flex;
+  align-items: center;
+`;
+
+const ProductCode = styled.p`
+  color: #737380;
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 25px;
+    width: 25px;
+    margin-right: 8px;
+  }
+`;
+
+const ProductInfo = styled.div`
+  display: flex;
+  margin: 48px;
+  justify-content: space-around;
+`;
+
+const GeneralInfo = styled.div`
+  margin: 32px 48px 32px;
+`;
+
+const ProgressContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 226px);
+`;
+
+export {
+  MainProductContainer,
+  ProductImage,
+  ProdCategory,
+  ProdDelivery,
+  ProductDescription,
+  AllRate,
+  ProductPriceValue,
+  ProductCodeValue,
+  ProductCode,
+  ProductInstallments,
+  ProductInfo,
+  GeneralInfo,
+  ProgressContainer,
+};
