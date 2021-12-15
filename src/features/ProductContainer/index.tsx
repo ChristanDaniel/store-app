@@ -1,9 +1,31 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/dist/client/router";
-
-import { MainProductContainer } from "./styles";
-// import { ProductContainerContext } from "../ProductContainerContext";
+import {
+  AllRate,
+  GeneralInfo,
+  MainProductContainer,
+  ProdCategory,
+  ProdDelivery,
+  ProductCode,
+  ProductCodeValue,
+  ProductDescription,
+  ProductImage,
+  ProductInfo,
+  ProductInstallments,
+  ProductPriceValue,
+  ProgressContainer,
+} from "./styles";
+import { ProductContainerContext } from "../ProductContainerContext";
 import axios from "axios";
+import { Footers } from "../../components/Footers";
+// import CircularProgress from "@mui/material/CircularProgress";
+// import Box from "@mui/material/Box";
+import {
+  BsFillLightningChargeFill,
+  BsFillCreditCardFill,
+} from "react-icons/bs";
+import { FaBarcode } from "react-icons/fa";
+import Button from "../../components/Button";
 
 interface ProductProps {
   category: string;
@@ -18,8 +40,6 @@ interface ProductProps {
     }
   ];
   title: string;
-  // inventory: number;
-  // promotion_amount: string;
 }
 
 const HomeProductContainer = (): JSX.Element => {
@@ -39,9 +59,22 @@ const HomeProductContainer = (): JSX.Element => {
     setProduct(response.data);
   };
 
+  const FormatedValues = (ind: string, value: number) => {
+    if (ind === "desconto") {
+      const num = value * 0.9;
+      return num.toFixed(2);
+    }
+
+    if (ind === "dividido") {
+      const num = value / 3;
+      return num.toFixed(2);
+    }
+  };
+
   useEffect(() => {
     getProduct();
   }, []);
+
   return (
     <>
       <MainProductContainer>
