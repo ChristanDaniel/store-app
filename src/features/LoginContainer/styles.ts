@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const LoginMainContainer = styled.main`
   display: flex;
@@ -6,7 +6,7 @@ const LoginMainContainer = styled.main`
   align-items: center;
   justify-content: center;
   position: relative;
-`
+`;
 
 const LoginMessageContent = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ const LoginMessageContent = styled.div`
   padding: 25px;
   z-index: 1;
   border-radius: 8px;
+
 
   span {
     color: #303030;
@@ -25,16 +26,16 @@ const LoginMessageContent = styled.div`
   }
 
   div {
-    margin-top: 50px;
+    margin-top: 50px
   }
-`
+`;
 
 const LoginMessage = styled.p`
   font-size: 60px;
   margin-right: 60px;
   font-weight: 900;
   color: #3498db;
-`
+`;
 
 const LoginMessageInformation = styled.div`
   span {
@@ -55,15 +56,45 @@ const LoginInputContent = styled.div`
   div {
     margin-bottom: 8px;
   }
-`
+
+  input {
+    width: 100%;
+  }
+
+
+`;
 
 const LoginButtonContent = styled.div`
   display: flex;
-`
+  justify-content: space-between;
+`;
 
 const LoginCartContent = styled.div`
+  margin-left: -20px;
   display: flex;
-`
+  padding: 50px;
+  width: 420px;
+  box-shadow: 0 0 40px 16px rgb(0 0 0 / 22%);
+  z-index: 2;
+  border-radius: 8px;
+  animation: move 800ms;
+  background: #fff;
+
+  input {
+    width: 290px;
+  }
+
+  @keyframes move {
+    from {
+      opacity: 0;
+      transform: translateX(-35%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+`;
 
 const ButtonUnlock = styled.button`
   margin-top: 16px;
@@ -83,4 +114,14 @@ const ButtonUnlock = styled.button`
     margin-right: 5px ;
   }
 `
-export { LoginMainContainer, LoginButtonContent, LoginMessageInformation, LoginMessage, ButtonUnlock, LoginInputContent, LoginCartContent, LoginMessageContent }
+
+export {
+  LoginMainContainer,
+  LoginMessageContent,
+  LoginMessage,
+  LoginMessageInformation,
+  LoginButtonContent,
+  LoginInputContent,
+  ButtonUnlock,
+  LoginCartContent,
+};
