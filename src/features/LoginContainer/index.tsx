@@ -7,10 +7,15 @@ import { useRouter } from "next/dist/client/router";
 
 import {
   LoginMainContainer,
+  LoginMessageContent,
+  LoginMessage,
+  LoginMessageInformation,
+  LoginCartContent,
+  ButtonUnlock,
   LoginButtonContent,
   LoginInputContent,
-  LoginCartContent,
 } from "./styles";
+import Button from "../../components/Button";
 
 const HomeProductContainer = (): JSX.Element => {
 
@@ -41,6 +46,18 @@ const HomeProductContainer = (): JSX.Element => {
   return (
     <>
       <LoginMainContainer>
+        <LoginMessageContent>
+          <LoginMessage>Login</LoginMessage>
+          <span>sou cliente</span>
+          <LoginMessageInformation>
+            <p>
+              Olá! Se você já comprou na <br />
+              loja da <span>Ig.Store</span> antes, <br />
+              por favor, informe seu e-mail <br />
+              e name. <br />
+            </p>
+          </LoginMessageInformation>
+        </LoginMessageContent>
         <LoginCartContent>
           <form onSubmit={handleSubmitForm}>
             <LoginInputContent>
