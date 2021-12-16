@@ -1,5 +1,6 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
+import { IoIosUnlock } from 'react-icons/io'
 
 // import { ToastContainer, toast } from "react-toastify";
 // import Button from "../../components/Button";
@@ -61,21 +62,32 @@ const HomeProductContainer = (): JSX.Element => {
         <LoginCartContent>
           <form onSubmit={handleSubmitForm}>
             <LoginInputContent>
-
               <div>
-              <TextField id="text-field" label="Name" variant="outlined" value={name} onChange={(event) => setName(event.target.value)} />
-                </div>
-                <div>
-              <TextField id="text-field" label="E-mail" variant="outlined" value={email} onChange={(event) => setEmail(event.target.value)} />
+                <TextField
+                  id="text-field"
+                  label="Name"
+                  variant="outlined"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
               </div>
-              <p>christian-daniel04@hotmail.com</p>
+              <div>
+                <TextField
+                  id="text-field"
+                  label="E-mail"
+                  variant="outlined"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </div>
             </LoginInputContent>
             <LoginButtonContent>
               <Button type="submit">CRIAR CONTA</Button>
+              <ButtonUnlock> <IoIosUnlock/> Esqueceu sua senha</ButtonUnlock>
             </LoginButtonContent>
           </form>
         </LoginCartContent>
-        <ToastContainer autoClose={5000} position="bottom-center" />
+        {/* <ToastContainer autoClose={5000} position="bottom-center" /> */}
       </LoginMainContainer>
     </>
   );

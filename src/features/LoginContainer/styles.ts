@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const LoginMainContainer = styled.main`
   display: flex;
@@ -6,7 +6,7 @@ const LoginMainContainer = styled.main`
   align-items: center;
   justify-content: center;
   position: relative;
-`;
+`
 
 const LoginMessageContent = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ const LoginMessageContent = styled.div`
   padding: 25px;
   z-index: 1;
   border-radius: 8px;
-
 
   span {
     color: #303030;
@@ -26,17 +25,16 @@ const LoginMessageContent = styled.div`
   }
 
   div {
-    margin-top: 50px
+    margin-top: 50px;
   }
-`;
-
+`
 
 const LoginMessage = styled.p`
   font-size: 60px;
   margin-right: 60px;
   font-weight: 900;
   color: #3498db;
-`;
+`
 
 const LoginMessageInformation = styled.div`
   span {
@@ -65,8 +63,24 @@ const LoginButtonContent = styled.div`
 
 const LoginCartContent = styled.div`
   display: flex;
-
 `
 
+const ButtonUnlock = styled.button`
+  margin-top: 16px;
+  height: 38px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: transparent;
+  color: #303030;
 
-export { LoginMainContainer, LoginButtonContent, LoginMessageInformation, LoginMessage, LoginInputContent, LoginCartContent, LoginMessageContent };
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  border: 0;
+
+  svg {
+    margin-right: 5px ;
+  }
+`
+export { LoginMainContainer, LoginButtonContent, LoginMessageInformation, LoginMessage, ButtonUnlock, LoginInputContent, LoginCartContent, LoginMessageContent }
