@@ -59,6 +59,32 @@ const HomeProductContainer = (): JSX.Element => {
     setProduct(response.data);
   };
 
+  const handleCheckIfHasOnCart = (productId: number) => {
+    const hasProduct = Boolean(
+      contextValue.state.find((prod) => prod.id === productId)
+    );
+
+    console.log("hasProduct", hasProduct);
+    return hasProduct;
+  };
+
+  const handleAddCart = (product: ProductProps) => {
+    const hasProduct = handleCheckIfHasOnCart(product.id);
+
+    !hasProduct &&
+      contextValue.dispatch({
+        type: "add_product",
+
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        count: 1,
+      });
+
+    router.push("/Cart");
+  };
+
   const FormatedValues = (ind: string, value: number) => {
     if (ind === "desconto") {
       const num = value * 0.9;
