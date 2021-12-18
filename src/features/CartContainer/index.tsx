@@ -9,6 +9,7 @@ import {
   MainContentCartProducts,
   SectionPaymentCartContainer,
   DeliveryCepContainer,
+  ProductContentCart,
   PaymenteContainer,
   ProductCartContainer,
   AsidePaymentCartContainer,
