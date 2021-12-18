@@ -75,6 +75,30 @@ const ButtonReduce = styled.button`
   }
 `;
 
+const ButtonAdd = styled.button`
+  font-size: 20px;
+  padding: 2px;
+  margin: 4px;
+  align-items: center;
+  border-radius: 4px;
+  color: #00640090;
+
+  cursor: pointer;
+  border: 0;
+
+  transition: 0.3s;
+
+  :hover {
+    filter: brightness(0.9);
+    background: #00640040;
+  }
+`;
+
+const ProductPrice = styled.span`
+  display: flex;
+  color: #006400;
+`;
+
 
 const DeliveryCepContainer = styled.div`
   margin-top: 20px;
@@ -97,6 +121,8 @@ export {
   SectionPaymentCartContainer,
   ProductCartContainer,
   ButtonReduce,
+  ProductPrice,
+  ButtonAdd,
   ProductContentCart,
   DeliveryCepContainer,
   AsidePaymentCartContainer,

@@ -10,6 +10,8 @@ import {
   SectionPaymentCartContainer,
   DeliveryCepContainer,
   ProductContentCart,
+  ButtonAdd,
+  ProductPrice,
   PaymenteContainer,
   ProductCartContainer,
   AsidePaymentCartContainer,
