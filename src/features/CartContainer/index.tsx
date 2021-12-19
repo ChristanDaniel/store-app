@@ -3,6 +3,8 @@ import { useRouter } from "next/dist/client/router";
 
 import { AiFillCreditCard } from "react-icons/ai";
 import { FaBarcode } from "react-icons/fa";
+import { CgTrashEmpty } from "react-icons/cg";
+
 
 import {
   MainCartProducts,
@@ -42,6 +44,17 @@ const HomeProductContainer = (): JSX.Element => {
     ProductContainerContext
   );
   const { state } = contextValue;
+
+  const handleDeleteProductFavoriteCart = (index: number) => {
+    const { state } = contextValue;
+
+    if (index > -1) {
+      state.splice(index, 1);
+    }
+
+    localStorage.setItem("state", JSON.stringify(state));
+    setRenderiza(!renderiza);
+  };
 
   const handleIncrement = (count: number, id: number, price: number) => {
     teste.map((pp) => {
