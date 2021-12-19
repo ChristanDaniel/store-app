@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Buttons } from "../../components/Button/styles";
 
 const MainCartProducts = styled.main`
   display: flex;
@@ -102,9 +103,20 @@ const ProductPrice = styled.span`
 
 const DeliveryCepContainer = styled.div`
   margin-top: 20px;
-  flex-direction: column;
   display: flex;
-`
+  align-items: center;
+  gap: 5px;
+  background-color: white;
+  padding: 12px;
+  position: relative;
+  top: 20px;
+  border-radius: 8px;
+  ${Buttons} {
+    margin-top: unset;
+    margin-left: 12px;
+  }
+`;
+
 const AsidePaymentCartContainer = styled.aside`
    margin: 20px;
 

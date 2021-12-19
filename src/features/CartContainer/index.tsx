@@ -5,6 +5,9 @@ import { AiFillCreditCard } from "react-icons/ai";
 import { FaBarcode } from "react-icons/fa";
 import { CgTrashEmpty } from "react-icons/cg";
 
+import { TextField } from "@mui/material";
+
+
 
 import {
   MainCartProducts,
@@ -20,6 +23,7 @@ import {
   AsidePaymentCartContainer,
 } from "./styles";
 import axios from "axios";
+import Button from "../../components/Button";
 
 interface ProductProps {
   category: string;
@@ -119,6 +123,16 @@ const HomeProductContainer = (): JSX.Element => {
                 );
               })}
             </ProductCartContainer>
+            <DeliveryCepContainer>
+              <TextField
+                placeholder="Qual CEP de entrega?"
+                value={inputCEP}
+                label="CEP"
+                variant="outlined"
+                onChange={(event) => setInputCEP(event.target.value)}
+              />
+              <Button onClick={handleDeliveryCEP}>CALCULAR</Button>
+            </DeliveryCepContainer>
           </SectionPaymentCartContainer>
 
         </PaymenteContainer>
