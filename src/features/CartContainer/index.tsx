@@ -10,6 +10,7 @@ import {
   SectionPaymentCartContainer,
   DeliveryCepContainer,
   ProductContentCart,
+  ButtonReduce,
   ButtonAdd,
   ProductPrice,
   PaymenteContainer,
@@ -42,6 +43,34 @@ const HomeProductContainer = (): JSX.Element => {
   );
   const { state } = contextValue;
 
+  const handleIncrement = (count: number, id: number, price: number) => {
+    teste.map((pp) => {
+      if (pp.id === id) {
+        pp.count = count + 1;
+        pp.price = price + pp.price;
+
+        localStorage.setItem("state", JSON.stringify(state));
+        setRenderiza(!renderiza);
+      }
+    });
+  };
+
+  const handleDecrement = (count: number, id: number, price: number) => {
+    if (count > 1) {
+      teste.map((pp) => {
+        if (pp.id === id) {
+          pp.count = count - 1;
+          pp.price = price * 0.5;
+
+          localStorage.setItem("state", JSON.stringify(state));
+          setRenderiza(!renderiza);
+        }
+      });
+    } else {
+      return;
+    }
+  };
+
 
   // useEffect(() => {
   // }, []);
@@ -65,9 +94,9 @@ const HomeProductContainer = (): JSX.Element => {
                       <div>
                         <p>Quantidade</p>
                         <div>
-                          <ButtonReduce onClick={() => decrementar(prod.count, prod.id, prod.price)}>-</ButtonReduce>
+                          <ButtonReduce onClick={() => handleDecrement(prod.count, prod.id, prod.price)}>-</ButtonReduce>
                           <p>{prod.count}</p>
-                          <ButtonAdd onClick={() => incrementar(prod.count, prod.id, prod.price)}>+</ButtonAdd>
+                          <ButtonAdd onClick={() => handleIncrement(prod.count, prod.id, prod.price)}>+</ButtonAdd>
                         </div>
                       </div>
                       <ProductPrice>R${prod.price.toFixed(2)}</ProductPrice>
