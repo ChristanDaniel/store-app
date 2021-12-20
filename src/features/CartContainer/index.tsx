@@ -135,6 +135,30 @@ const HomeProductContainer = (): JSX.Element => {
             </DeliveryCepContainer>
           </SectionPaymentCartContainer>
 
+          <AsidePaymentCartContainer>
+          <div>
+              <h1>Resumo do Pedido</h1>
+              <p>
+                Subtotal:
+                <span>
+                  R$ {FormatedFavoriteCartValues("soma", state)?.toFixed(2)}
+                </span>
+              </p>
+              <p>
+                Frete:
+                <span>
+                  R$ {FormatedFavoriteCartValues("frete", state)?.toFixed(2)}
+                </span>
+              </p>
+              <h4>
+                TOTAL:
+                <span>
+                  R$ {FormatedFavoriteCartValues("total", state)?.toFixed(2)}
+                </span>
+              </h4>
+            </div>
+          </AsidePaymentCartContainer>
+
         </PaymenteContainer>
       </MainCartProducts>
     </>
