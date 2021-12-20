@@ -117,13 +117,41 @@ const DeliveryCepContainer = styled.div`
   }
 `;
 
-const AsidePaymentCartContainer = styled.aside`
-   margin: 20px;
+interface AsidePaymentCartContainerProps {
+  $hasShipping: boolean;
+}
 
-   /* svg {
+const AsidePaymentCartContainer = styled.aside<AsidePaymentCartContainerProps>`
+  margin: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  height: ${(props) => (!props.$hasShipping ? "275px" : "unset")};
+
+  p,
+  h1,
+  h4 {
+    margin-bottom: 12px;
+  }
+  span {
+    margin-left: 4px;
+  }
+
+  /* svg {
      height: 50px;
      width: 50px;
    } */
+
+  #resume-buttons {
+    display: flex;
+    ${Buttons} {
+      margin-left: 12px;
+    }
+    #clear-cart-button {
+      background-color: red;
+      opacity: 0.9;
+    }
+  }
 `;
 
 export {

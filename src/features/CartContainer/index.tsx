@@ -161,7 +161,7 @@ const HomeProductContainer = (): JSX.Element => {
             </DeliveryCepContainer>
           </SectionPaymentCartContainer>
 
-          <AsidePaymentCartContainer>
+          <AsidePaymentCartContainer $hasShipping={verificarCep}>
             <div>
               <h1>Resumo do Pedido</h1>
               <p>
