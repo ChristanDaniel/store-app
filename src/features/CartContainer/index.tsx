@@ -177,6 +177,16 @@ const HomeProductContainer = (): JSX.Element => {
                 <span>R$ {FormatedFavoriteCartValues('total', state)?.toFixed(2)}</span>
               </h4>
             </div>
+            <p>
+              <AiFillCreditCard /> 3X R$
+              {FormatedFavoriteCartValues("dividido", state)?.toFixed(2)} s/
+              juros
+            </p>
+            <p>
+              <FaBarcode />
+              R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(2)} com
+              desconto de 10% à vista no boleto.
+            </p>
           </AsidePaymentCartContainer>
         </PaymenteContainer>
       </MainCartProducts>
