@@ -42,6 +42,8 @@ interface ProductProps {
 
 const HomeProductContainer = (): JSX.Element => {
   const { contextValue, loginAuthentication, teste, setTeste } = useContext(ProductContainerContext)
+  const [cepClient, setCepClient] = useState<cepProps[]>([]);
+
   const { state } = contextValue
 
   const handleDeleteProductFavoriteCart = (index: number) => {
@@ -82,6 +84,25 @@ const HomeProductContainer = (): JSX.Element => {
       return
     }
   }
+
+  const handleDeliveryCEP = async (event: FormEvent) => {
+    event.preventDefault();
+    if (inputCEP.length > 8) {
+      const response = await axios.get(
+        `http://viacep.com.br/ws/${inputCEP}/json/`
+      );
+      if (!response.data.erro) {
+        setCepClient([response.data]);
+        setVerificarCep(true);
+      } else {
+        setCepClient([]);
+        setVerificarCep(false);
+        console.log(response.data);
+      }
+    } else {
+      return;
+    }
+  };
 
   const FormatedFavoriteCartValues = (ind: string, products: ProductProps[]) => {
     if (ind === 'soma') {
