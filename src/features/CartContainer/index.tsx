@@ -228,6 +228,17 @@ const HomeProductContainer = (): JSX.Element => {
                   })
                 )}
             </div>
+            <div id="resume-buttons">
+              <Button onClick={() => {
+                router.push(`/Success`)
+                handleCleanAll()
+              }}>
+                Finalizar o Pedido
+              </Button>
+              <Button id="clear-cart-button" onClick={() => handleCleanAll()}>
+                Limpar o Carrinho
+              </Button>
+            </div>
           </AsidePaymentCartContainer>
         </PaymenteContainer>
       </MainCartProducts>
