@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 import { AiFillCreditCard } from 'react-icons/ai'
 import { FaBarcode } from 'react-icons/fa'
 import { CgTrashEmpty } from 'react-icons/cg'
+import { BsCart3 } from "react-icons/bs"
 
 import { TextField } from '@mui/material'
 
@@ -22,6 +23,7 @@ import {
 } from './styles'
 import axios from 'axios'
 import Button from '../../components/Button'
+import { ProductContainerContext } from '../ProductContainerContext'
 
 interface ProductProps {
   category: string
@@ -40,9 +42,25 @@ interface ProductProps {
   // promotion_amount: string;
 }
 
+type cepProps = {
+  bairro?: string;
+  cep?: string;
+  complemento?: string;
+  localidade?: string;
+  logradouro?: string;
+  uf?: string;
+};
+
 const HomeProductContainer = (): JSX.Element => {
   const { contextValue, loginAuthentication, teste, setTeste } = useContext(ProductContainerContext)
   const [cepClient, setCepClient] = useState<cepProps[]>([]);
+  const [renderiza, setRenderiza] = useState(true);
+  const [inputCEP, setInputCEP] = useState("");
+  const [verificarCep, setVerificarCep] = useState(false);
+
+
+  const router = useRouter();
+
 
   const { state } = contextValue
 
