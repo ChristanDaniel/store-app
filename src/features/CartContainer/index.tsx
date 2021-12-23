@@ -46,6 +46,14 @@ const HomeProductContainer = (): JSX.Element => {
 
   const { state } = contextValue
 
+  const handleCleanAll = () => {
+    router.push('/')
+    localStorage.removeItem("state");
+    teste.splice(0, 1000);
+    setTeste(teste);
+    setRenderiza(!renderiza);
+  };
+
   const handleDeleteProductFavoriteCart = (index: number) => {
     const { state } = contextValue
 
