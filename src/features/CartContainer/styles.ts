@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { Buttons } from "../../components/Button/styles";
 
 const MainCartProducts = styled.main`
+  height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px;
   display: flex;
-  justify-content: center;
-`;
+  flex-direction: column;
+  align-items: center;
 
-const MainContentCartProducts = styled.main``;
+  background: #eee;
+`;
 
 const PaymenteContainer = styled.div`
   display: flex;
@@ -16,9 +20,12 @@ const PaymenteContainer = styled.div`
 const SectionPaymentCartContainer = styled.section``;
 
 const ProductCartContainer = styled.div`
-  div {
-    display: flex;
-  }
+  width: 800px;
+  max-height: 360px;
+  overflow: auto;
+  padding: 0 12px 0 0;
+  position: relative;
+  top: 20px;
 `;
 
 const ProductContentCart = styled.div`
@@ -54,7 +61,6 @@ const ProductContentCart = styled.div`
   h4 {
     max-width: 400px;
   }
-
 `;
 
 const ButtonReduce = styled.button`
@@ -99,7 +105,6 @@ const ProductPrice = styled.span`
   display: flex;
   color: #006400;
 `;
-
 
 const DeliveryCepContainer = styled.div`
   margin-top: 20px;
@@ -156,13 +161,12 @@ const AsidePaymentCartContainer = styled.aside<AsidePaymentCartContainerProps>`
 
 export {
   MainCartProducts,
-  MainContentCartProducts,
   PaymenteContainer,
   SectionPaymentCartContainer,
   ProductCartContainer,
+  ButtonAdd,
   ButtonReduce,
   ProductPrice,
-  ButtonAdd,
   ProductContentCart,
   DeliveryCepContainer,
   AsidePaymentCartContainer,

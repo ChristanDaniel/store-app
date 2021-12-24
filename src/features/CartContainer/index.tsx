@@ -10,17 +10,17 @@ import { TextField } from '@mui/material'
 
 import {
   MainCartProducts,
-  MainContentCartProducts,
   SectionPaymentCartContainer,
   DeliveryCepContainer,
-  ProductContentCart,
-  ButtonReduce,
-  ButtonAdd,
-  ProductPrice,
   PaymenteContainer,
+  ButtonAdd,
   ProductCartContainer,
-  AsidePaymentCartContainer
-} from './styles'
+  AsidePaymentCartContainer,
+  ProductContentCart,
+  ProductPrice,
+  ButtonReduce,
+} from "./styles";
+
 import axios from 'axios'
 import Button from '../../components/Button'
 import { ProductContainerContext } from '../ProductContainerContext'
@@ -38,8 +38,6 @@ interface ProductProps {
     }
   ]
   title: string
-  // inventory: number;
-  // promotion_amount: string;
 }
 
 type cepProps = {
@@ -59,7 +57,7 @@ const HomeProductContainer = (): JSX.Element => {
   const [verificarCep, setVerificarCep] = useState(false);
 
 
-  const router = useRouter();
+  const router = useRouter();a
 
 
   const { state } = contextValue
