@@ -6,7 +6,14 @@ import React, {
   useMemo,
   useReducer,
 } from "react";
-import { initialState } from "./CartReducer";
+
+import {
+  AppReducer,
+  initialState,
+  ProductAction,
+  ProductState,
+  Reducer,
+} from "./CartReducer";
 
 interface ProductProps {
   category?: string;
@@ -33,6 +40,11 @@ interface LoginAuthenticationProps {
 
 
 interface IProductContainerProps {
+  contextValue: {
+    state: ProductState[];
+    dispatch: React.Dispatch<ProductAction>;
+  };
+
   loginAuthentication: LoginAuthenticationProps
   setLoginAuthentication: React.Dispatch<React.SetStateAction<LoginAuthenticationProps>>
 
@@ -102,6 +114,7 @@ const ProductContainerProvider: React.FC = ({ children }) => {
         setProducs,
         teste,
         setTeste,
+        contextValue,
       }}>
       {children}
     </ProductContainerContext.Provider>
