@@ -57,7 +57,7 @@ const HomeProductContainer = (): JSX.Element => {
   const [verificarCep, setVerificarCep] = useState(false);
 
 
-  const router = useRouter();a
+  const router = useRouter();
 
 
   const { state } = contextValue
@@ -158,6 +158,12 @@ const HomeProductContainer = (): JSX.Element => {
       }
     }
   }
+
+  useEffect(() => {
+    if (loginAuthentication.loging === false) {
+      router.push("/login");
+    }
+  }, [loginAuthentication, router]);
 
   useEffect(() => {
     if (state.length === 0 ) {
