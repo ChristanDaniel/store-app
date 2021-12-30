@@ -159,8 +159,12 @@ const HomeProductContainer = (): JSX.Element => {
     }
   }
 
-  // useEffect(() => {
-  // }, []);
+  useEffect(() => {
+    if (state.length === 0 ) {
+      router.push('/')
+    }
+  }, [router, state]);
+
 
   return (
     <>
