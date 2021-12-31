@@ -27,15 +27,13 @@ import Button from '../../components/Button'
 interface ProductProps {
   category: string
   description: string
-  id: string
+  id: number
   image: string
   price: number
-  rating: [
-    {
-      rate: string
-      count: string
-    }
-  ]
+  rating: {
+    rate: string
+    count: string
+  }
   title: string
 }
 
@@ -45,14 +43,14 @@ const HomeProductContainer = (): JSX.Element => {
 
   const { contextValue } = useContext(ProductContainerContext)
 
-  const getProduct = async () => {
+  const getProduct = useCallback(async () => {
     if (!router.query.id) {
       router.push('/')
     }
 
     const response = await axios.get(`https://fakestoreapi.com/products/${router.query.id}`)
     setProduct(response.data)
-  }
+  }, [router])
 
   const handleCheckIfHasOnCart = (productId: number) => {
     const hasProduct = Boolean(contextValue.state.find((prod) => prod.id === productId))
@@ -92,7 +90,7 @@ const HomeProductContainer = (): JSX.Element => {
 
   useEffect(() => {
     getProduct()
-  }, [])
+  }, [getProduct])
 
   return (
     <>
