@@ -84,11 +84,6 @@ const ProductContainerProvider: React.FC = ({ children }) => {
     return { state, dispatch };
   }, [state, dispatch]);
 
-
-  // useEffect(() => {
-  //   setLoginAuthentication(LoginFromStorage)
-  // }, [loginAuthentication]);
-
   useEffect(() => {
     if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
@@ -100,9 +95,12 @@ const ProductContainerProvider: React.FC = ({ children }) => {
 
   const getAllProducts = async () => {
     const response = await axios.get("https://fakestoreapi.com/products");
-    console.log(response)
     setProducs(response.data);
   };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <ProductContainerContext.Provider
