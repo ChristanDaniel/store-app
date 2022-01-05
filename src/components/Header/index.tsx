@@ -88,9 +88,9 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
               </ButtonCartFavorite>
             </>
           ) : (
-            <UserContent onClick={() => router.push("/login")}>
-              <FiUser /> Conta{" "}
-            </UserContent>
+              <UserContent onClick={() => router.push("/login")}>
+                <FiUser /> Conta{" "}
+              </UserContent>
           )}
 
           <BorderLeft />

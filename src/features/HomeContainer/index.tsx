@@ -22,24 +22,23 @@ import {
 } from "./styles";
 
 interface ProductProps {
-  category?: string
-  description?: string
-  id: number
-  image: string
-  price: number
+  category?: string;
+  description?: string;
+  id: number;
+  image: string;
+  price: number;
   rating?: [
     {
-      rate: string
-      count: string
+      rate: string;
+      count: string;
     }
-  ]
-  title: string
-  count: number
+  ];
+  title: string;
 }
 
 const HomeContainer = (): JSX.Element => {
   const router = useRouter();
-  const { products, contextValue, loginAuthentication } = useContext(
+  const { products, contextValue } = useContext(
     ProductContainerContext
   );
 
@@ -48,7 +47,6 @@ const HomeContainer = (): JSX.Element => {
       contextValue.state.find((prod) => prod.id === productId)
     );
 
-    console.log("hasProduct", hasProduct);
     return hasProduct;
   };
 
@@ -68,12 +66,12 @@ const HomeContainer = (): JSX.Element => {
   };
 
   const FormatedValues = (ind: string, value: number) => {
-    if (ind === "desconto") {
+    if (ind === "discount") {
       const num = value * 0.9;
       return num.toFixed(2);
     }
 
-    if (ind === "dividido") {
+    if (ind === "divided") {
       const num = value / 3;
       return num.toFixed(2);
     }
@@ -84,7 +82,7 @@ const HomeContainer = (): JSX.Element => {
       <MainContainer>
         <Banner
           src="https://img.terabyteshop.com.br/banner/1200.jpg"
-          alt="teste"
+          alt="Baner do Site"
         />
         <MainContent>
           {products.map((product, index) => {
@@ -97,11 +95,11 @@ const HomeContainer = (): JSX.Element => {
                   de R$ {product.price.toFixed(2)} por
                 </ProdPriceValueSpan>
                 <ProdPriceValue>
-                  R$ {FormatedValues("desconto", product.price)}{" "}
+                  R$ {FormatedValues("discount", product.price)}{" "}
                   <span>à vista no boleto</span>
                 </ProdPriceValue>
                 <InstallmentAmount>
-                  ou até 3x de R$ {FormatedValues("dividido", product.price)}
+                  ou até 3x de R$ {FormatedValues("divided", product.price)}
                 </InstallmentAmount>
                 <ButtonContainerBuy>
                   <Button onClick={() => router.push(`/Product/${product.id}`)}>
