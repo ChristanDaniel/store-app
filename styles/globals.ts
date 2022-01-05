@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { pageContainer } from "../src/features/styles";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -19,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    ${pageContainer}
 
     @media (max-width: 1080px) {
       font-size: 93,75%; //15px

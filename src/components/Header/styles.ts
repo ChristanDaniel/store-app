@@ -17,8 +17,8 @@ const Headers = styled.header`
   padding: 2rem 10rem;
 
   border-bottom: 3px solid #3498db;
-  -webkit-box-shadow: -1px -3px 11px 2px rgba(0,0,0,0.24);
-  box-shadow: -1px -3px 11px 2px rgba(0,0,0,0.24);
+  -webkit-box-shadow: -1px -3px 11px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: -1px -3px 11px 2px rgba(0, 0, 0, 0.24);
 
   h1 {
     margin-left: 2rem;
@@ -35,6 +35,7 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   button {
     background: transparent;
@@ -59,12 +60,13 @@ const UserContainer = styled.div`
 
 const ButtonArrowUser = styled.button``;
 
-const UserContent = styled.p`
+const UserContent = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
   padding-right: 19px;
   cursor: pointer;
+  margin-right: 6px;
 
   svg {
     color: #3498db;
