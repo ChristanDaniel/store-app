@@ -74,7 +74,6 @@ export function OpenModalFavoriteCart({
 
   useEffect(() => {
     const { state } = contextValue;
-    console.log("DENTRO DO EFFECT", state);
     setTeste(state);
   }, [contextValue, setTeste]);
 
