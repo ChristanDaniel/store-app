@@ -3,13 +3,15 @@ import {
   ModalContainer,
   HeadModalContent,
   BodyModalContent,
+  NoValueCart,
   ProductDivContent,
   AmountProductContent,
-  FooterModalContent
+  FooterModalContent,
 } from "./styles";
 
 import { IoMdTrash } from "react-icons/io";
 import { CgTrashEmpty } from "react-icons/cg";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 import Image from "next/image";
 import closeImg from "../../../public/close.svg";
@@ -74,6 +76,7 @@ export function OpenModalFavoriteCart({
 
   useEffect(() => {
     const { state } = contextValue;
+    console.log("DENTRO DO EFFECT", state);
     setTeste(state);
   }, [contextValue, setTeste]);
 
@@ -94,35 +97,48 @@ export function OpenModalFavoriteCart({
       </button>
       <ModalContainer>
         <HeadModalContent>
-          <h3>Meu Carrinho</h3>
+          <div>
+            <h3>Meu Carrinho</h3>
+            <span>Produtos - {teste.length}</span>
+          </div>
           <button onClick={() => handleCleanAll()}>
             <IoMdTrash /> Remover Tudo
           </button>
         </HeadModalContent>
-        <BodyModalContent>
-          {teste && teste?.map((test, index) => {
-            return (
-              <>
-                <ProductDivContent key={test.id + index}>
-                  <h4>{test.title}</h4>
-                  <AmountProductContent>
-                    {/* <p>Quantidade</p>
-                    <p>{test.count}</p> */}
-                    <button onClick={() => DeleteProductFavoriteCart(index)}>
-                      <CgTrashEmpty />
-                      Remover
-                    </button>
-                    <p>R$ {test.price.toFixed(2)}</p>
-                  </AmountProductContent>
-                </ProductDivContent>
-              </>
-            );
-          })}
-        </BodyModalContent>
+        {teste.length === 0 ? (
+          <NoValueCart>
+            <h3>CARRINHO VAZIO</h3>
+            <MdOutlineRemoveShoppingCart />
+            <p>Não há produtos selecionados até o momento!</p>
+          </NoValueCart>
+        ) : (
+          <BodyModalContent>
+            {teste &&
+              teste?.map((test, index) => {
+                return (
+                  <>
+                    <ProductDivContent key={test.id + index}>
+                      <img src={`${test.image}`} alt={`${test.title}`} />
+                      <h4>{test.title}</h4>
+                      <AmountProductContent>
+                        <p>R$ {test.price.toFixed(2)}</p>
+                        <button
+                          onClick={() => DeleteProductFavoriteCart(index)}
+                        >
+                          <CgTrashEmpty />
+                        </button>
+                      </AmountProductContent>
+                    </ProductDivContent>
+                  </>
+                );
+              })}
+          </BodyModalContent>
+        )}
+
         <FooterModalContent>
           <div>
             <h5>Valor Total</h5>
-            <p>R$ {FormatedFavoriteCartValues(teste).toFixed(2)}</p>
+            <h2>R$ {FormatedFavoriteCartValues(teste).toFixed(2)}</h2>
           </div>
           <Button onClick={() => handleCompleteOrder(onRequestClose)}>
             Finalizar Pedido

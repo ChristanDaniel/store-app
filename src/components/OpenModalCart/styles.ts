@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 450px;
-`;
+`
 
 const HeadModalContent = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const HeadModalContent = styled.div`
   align-items: center;
   /* margin: 20px; */
 
-  div{
+  div {
     display: flex;
     align-items: center;
   }
@@ -52,7 +52,7 @@ const HeadModalContent = styled.div`
     height: 18px;
     width: 18px;
   }
-`;
+`
 
 const BodyModalContent = styled.div`
   display: flex;
@@ -65,10 +65,59 @@ const BodyModalContent = styled.div`
   h4 {
     font-size: 13px;
   }
-`;
+`
 
+const ProductDivContent = styled.div`
+  max-height: 70px;
+  background: #fff;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-top: 16px;
 
+  img {
+    margin-right: 10px;
+    height: 45px;
+    width: 60px;
+  }
 
+  h4 {
+    color: #3a383e;
+    font-size: 14px;
+    max-width: 270px;
+  }
+
+  button {
+    border-radius: 8px;
+    color: #8b0000;
+
+    cursor: pointer;
+    border: 0;
+
+    transition: 0.3s;
+
+    :hover {
+      filter: brightness(0.9);
+    }
+  }
+`
+
+const AmountProductContent = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  width: 510px;
+  justify-content: flex-end;
+
+  p {
+    display: flex;
+    margin-right: 14px;
+    color: #006400;
+    text-align: bold;
+  }
 
   button {
     display: flex;
@@ -79,7 +128,7 @@ const BodyModalContent = styled.div`
       width: 16px;
     }
   }
-`;
+`
 
 const NoValueCart = styled.div`
   display: flex;
@@ -93,7 +142,7 @@ const NoValueCart = styled.div`
     height: 100px;
     width: 100px;
   }
-`;
+`
 
 const FooterModalContent = styled.div`
   display: flex;
@@ -112,14 +161,6 @@ const FooterModalContent = styled.div`
       color: #006400;
     }
   }
-`;
+`
 
-export {
-  ModalContainer,
-  HeadModalContent,
-  BodyModalContent,
-  NoValueCart,
-  ProductDivContent,
-  AmountProductContent,
-  FooterModalContent,
-};
+export { ModalContainer, HeadModalContent, BodyModalContent, NoValueCart, ProductDivContent, AmountProductContent, FooterModalContent }
