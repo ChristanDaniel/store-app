@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from 'axios'
+import React, { useContext } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import React, { useContext, useEffect, useState } from 'react'
+
 import Button from '../../components/Button'
 import { Footers } from '../../components/Footers'
+import { Slider } from '@mui/material'
+
 import { ProductContainerContext } from '../ProductContainerContext'
 
 import { BsCartCheckFill } from "react-icons/bs";
@@ -80,6 +82,9 @@ const HomeContainer = (): JSX.Element => {
   return (
     <>
       <MainContainer>
+        <Banner>
+          <Slider />
+        </Banner>
         <MainContent>
           {products.map((product, index) => {
             return (

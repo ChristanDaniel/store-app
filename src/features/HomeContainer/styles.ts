@@ -6,9 +6,6 @@ const Banner = styled.img`
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
   border-top: 2.5px solid #3498db;
   border-bottom: 5px solid #3498db;
-
-  height: 208px;
-  width: 100%;
 `;
 
 const MainContent = styled.main`
@@ -25,7 +22,6 @@ const MainContentDiv = styled.div`
   width: 250px;
   flex-direction: column;
   padding: 24px 18px;
-  /* border: 1px solid #3498db; */
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
   justify-content: space-between;
 
@@ -74,9 +70,7 @@ const ButtonContainerBuy = styled.div`
   display: flex;
   justify-content: space-around;
 
-  button {
-    /* margin-left: 6px; */
-  }
+  button {}
 `;
 
 export {
