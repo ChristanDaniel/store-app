@@ -80,10 +80,6 @@ const HomeContainer = (): JSX.Element => {
   return (
     <>
       <MainContainer>
-        <Banner
-          src="https://img.terabyteshop.com.br/banner/1200.jpg"
-          alt="Baner do Site"
-        />
         <MainContent>
           {products.map((product, index) => {
             return (
