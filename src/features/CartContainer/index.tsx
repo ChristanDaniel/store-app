@@ -15,6 +15,7 @@ import {
   PaymenteContainer,
   ButtonAdd,
   ProductCartContainer,
+  ProductTitle,
   AsidePaymentCartContainer,
   ProductContentCart,
   ProductPrice,
@@ -180,28 +181,35 @@ const HomeProductContainer = (): JSX.Element => {
         </h1>
         <PaymenteContainer>
           <SectionPaymentCartContainer>
-            <ProductCartContainer>
+          <ProductCartContainer>
               {state.map((prod, index) => {
                 return (
                   <>
                     <ProductContentCart key={prod.id + index}>
                       <img src={prod.image} alt={prod.title} />
-                      <h4>{prod.title}</h4>
+                      <ProductTitle>{prod.title}</ProductTitle>
                       <div>
                         <p>Quantidade</p>
                         <div>
-                          <ButtonReduce onClick={() => handleDecrement(prod.count, prod.id, prod.price)}>-</ButtonReduce>
+                          <ButtonReduce onClick={() => handleDecrement(prod.count, prod.id, prod.price)}>
+                            -
+                          </ButtonReduce>
                           <p>{prod.count}</p>
-                          <ButtonAdd onClick={() => handleIncrement(prod.count, prod.id, prod.price)}>+</ButtonAdd>
+                          <ButtonAdd onClick={() => handleIncrement(prod.count, prod.id, prod.price)}>
+                            +
+                          </ButtonAdd>
                         </div>
                       </div>
-                      <ProductPrice>R${prod.price.toFixed(2)}</ProductPrice>
-                      <button onClick={() => handleDeleteProductFavoriteCart(index)}>
+                      <ProductPrice>R$ {prod.price.toFixed(2)}</ProductPrice>
+                      <Button
+                        id="delete-product"
+                        onClick={() => handleDeleteProductFavoriteCart(index)}
+                      >
                         <CgTrashEmpty />
-                      </button>
+                      </Button>
                     </ProductContentCart>
                   </>
-                )
+                );
               })}
             </ProductCartContainer>
             <DeliveryCepContainer>
