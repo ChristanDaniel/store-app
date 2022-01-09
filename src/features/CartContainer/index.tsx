@@ -213,14 +213,37 @@ const HomeProductContainer = (): JSX.Element => {
               })}
             </ProductCartContainer>
             <DeliveryCepContainer>
-              <TextField
-                placeholder="Qual CEP de entrega?"
-                value={inputCEP}
-                label="CEP"
-                variant="outlined"
-                onChange={(event) => setInputCEP(event.target.value)}
-              />
-              <Button onClick={handleDeliveryCEP}>CALCULAR</Button>
+              <DeliveryInputContent>
+                <TextField
+                  placeholder="Qual CEP de entrega?"
+                  value={inputCEP}
+                  label="CEP"
+                  variant="outlined"
+                  onChange={(event) => setInputCEP(event.target.value)}
+                />
+                <Button onClick={handleDeliveryCEP}>CALCULAR</Button>
+              </DeliveryInputContent>
+              {verificarCep &&
+                cepClient.map((cep, index) => {
+                  return (
+                    <>
+                      <DeliveryCepContent>
+                        <h5 key={index}>CEP da Entrega</h5>
+                        <div>
+                          <p>Rua: <span>{cep?.logradouro ? cep.logradouro : "-"}</span></p>
+                          <p>Nº <span>{cep?.complemento ? cep.complemento : "-"}</span></p>
+                        </div>
+                        <div>
+                          <p>Bairro: <span>{cep?.bairro ? cep.bairro : "-"}</span></p>
+                          <span>
+                            {cep?.localidade}
+                            <span>- {cep?.uf}</span>
+                          </span>
+                        </div>
+                      </DeliveryCepContent>
+                    </>
+                  );
+                })}
             </DeliveryCepContainer>
           </SectionPaymentCartContainer>
 
@@ -251,25 +274,6 @@ const HomeProductContainer = (): JSX.Element => {
               desconto de 10% à vista no boleto.
             </p>
 
-            <div>
-              {verificarCep && (
-                  cepClient.map((cep, index) => {
-                    return (
-                      <>
-                        <h3 key={index}>CEP da Entrega</h3>
-                        <p>Rua: {cep?.logradouro ? cep.logradouro : '404 Not found'}</p>
-                        <p>Bairro: {cep?.bairro? cep.bairro : '404 Not found'}</p>
-                        <p>CEP: {cep?.cep? cep.cep : '404 Not found'}</p>
-                        <p>Nº {cep?.complemento ? cep.complemento : '404 Not found'}</p>
-                        <p>
-                          {cep?.localidade}
-                          <span>-{cep?.uf}</span>
-                        </p>
-                      </>
-                    );
-                  })
-                )}
-            </div>
             <div id="resume-buttons">
               <Button onClick={() => {
                 router.push(`/Success`)
