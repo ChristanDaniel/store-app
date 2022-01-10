@@ -82,6 +82,7 @@ const ButtonReduce = styled.button`
   }
 `;
 
+
 const ButtonAdd = styled.button`
   font-size: 20px;
   padding: 2px;
@@ -104,23 +105,62 @@ const ButtonAdd = styled.button`
 const ProductPrice = styled.span`
   display: flex;
   color: #006400;
+  min-width: 92px;
 `;
 
 const DeliveryCepContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 6px;
   display: flex;
   align-items: center;
   gap: 5px;
   background-color: white;
   padding: 12px;
-  position: relative;
-  top: 20px;
+  top: 380px;
+  width: 100%;
+  position: absolute;
   border-radius: 8px;
+  min-height: 98px;
+
+  label {
+    top: -5px;
+  }
+
+  input {
+    height: 8px
+  }
+
   ${Buttons} {
     margin-top: unset;
     margin-left: 12px;
   }
 `;
+
+const DeliveryInputContent = styled.div`
+  display: flex;
+  min-width: 350px;
+`
+
+const DeliveryCepContent = styled.div`
+  padding: 8px;
+  align-items: center;
+  min-width: 422px;
+
+  h5 {
+    margin-left: 150px;
+    margin-bottom: 4px;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  span {
+    color: #808080;
+  }
+`
+
+
 
 interface AsidePaymentCartContainerProps {
   $hasShipping: boolean;
@@ -164,6 +204,8 @@ export {
   PaymenteContainer,
   SectionPaymentCartContainer,
   ProductCartContainer,
+  DeliveryCepContent,
+  DeliveryInputContent,
   ButtonAdd,
   ButtonReduce,
   ProductPrice,
