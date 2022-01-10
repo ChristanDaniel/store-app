@@ -53,20 +53,22 @@ type cepProps = {
 };
 
 const HomeProductContainer = (): JSX.Element => {
-  const { contextValue, loginAuthentication, teste, setTeste } = useContext(ProductContainerContext)
-  const [cepClient, setCepClient] = useState<cepProps[]>([]);
+  const { contextValue, loginAuthentication, teste, setTeste } = useContext(
+    ProductContainerContext
+  );
   const [renderiza, setRenderiza] = useState(true);
   const [inputCEP, setInputCEP] = useState("");
+  const [cepClient, setCepClient] = useState<cepProps[]>([]);
   const [verificarCep, setVerificarCep] = useState(false);
+  // const [sumValuesTotal, setSumValuesTotal] = useState(0);
 
-
+  // const [Product, setProduct] = useState<ProductProps[]>([]);
   const router = useRouter();
 
-
-  const { state } = contextValue
+  const { state } = contextValue;
 
   const handleCleanAll = () => {
-    router.push('/')
+    router.push("/");
     localStorage.removeItem("state");
     teste.splice(0, 1000);
     setTeste(teste);
@@ -74,43 +76,43 @@ const HomeProductContainer = (): JSX.Element => {
   };
 
   const handleDeleteProductFavoriteCart = (index: number) => {
-    const { state } = contextValue
+    const { state } = contextValue;
 
     if (index > -1) {
-      state.splice(index, 1)
+      state.splice(index, 1);
     }
 
-    localStorage.setItem('state', JSON.stringify(state))
-    setRenderiza(!renderiza)
-  }
+    localStorage.setItem("state", JSON.stringify(state));
+    setRenderiza(!renderiza);
+  };
 
   const handleIncrement = (count: number, id: number, price: number) => {
     teste.map((pp) => {
       if (pp.id === id) {
-        pp.count = count + 1
-        pp.price = price + pp.price
+        pp.count = count + 1;
+        pp.price = price + pp.price;
 
-        localStorage.setItem('state', JSON.stringify(state))
-        setRenderiza(!renderiza)
+        localStorage.setItem("state", JSON.stringify(state));
+        setRenderiza(!renderiza);
       }
-    })
-  }
+    });
+  };
 
   const handleDecrement = (count: number, id: number, price: number) => {
     if (count > 1) {
       teste.map((pp) => {
         if (pp.id === id) {
-          pp.count = count - 1
-          pp.price = price * 0.5
+          pp.count = count - 1;
+          pp.price = price * 0.5;
 
-          localStorage.setItem('state', JSON.stringify(state))
-          setRenderiza(!renderiza)
+          localStorage.setItem("state", JSON.stringify(state));
+          setRenderiza(!renderiza);
         }
-      })
+      });
     } else {
-      return
+      return;
     }
-  }
+  };
 
   const handleDeliveryCEP = async (event: FormEvent) => {
     event.preventDefault();
@@ -131,48 +133,51 @@ const HomeProductContainer = (): JSX.Element => {
     }
   };
 
-  const FormatedFavoriteCartValues = (ind: string, products: ProductProps[]) => {
-    if (ind === 'soma') {
-      return products.reduce((a, b) => a + b.price, 0)
+  useEffect(() => {
+    if (state.length === 0) {
+      router.push("/");
     }
-    if (ind === 'total') {
+  }, [router, state]);
+
+  const FormatedFavoriteCartValues = (
+    ind: string,
+    products: ProductProps[]
+  ) => {
+    if (ind === "soma") {
+      return products.reduce((a, b) => a + b.price, 0);
+    }
+    if (ind === "total") {
       if (verificarCep) {
-        return products.reduce((a, b) => a + b.price, 0) + 50
+        return products.reduce((a, b) => a + b.price, 0) + 50;
       }
-      return products.reduce((a, b) => a + b.price, 0)
+      return products.reduce((a, b) => a + b.price, 0);
     }
-    if (ind === 'dividido') {
+    if (ind === "dividido") {
       if (verificarCep) {
-        return products.reduce((a, b) => a + b.price, 50) / 3
+        return products.reduce((a, b) => a + b.price, 50) / 3;
       }
-      return products.reduce((a, b) => a + b.price, 0) / 3
+      return products.reduce((a, b) => a + b.price, 0) / 3;
     }
-    if (ind === 'desconto') {
+    if (ind === "desconto") {
       if (verificarCep) {
-        return products.reduce((a, b) => a + b.price, 50) * 0.9
+        return products.reduce((a, b) => a + b.price, 50) * 0.9;
       }
-      return products.reduce((a, b) => a + b.price, 0) * 0.9
+      return products.reduce((a, b) => a + b.price, 0) * 0.9;
     }
-    if (ind === 'frete') {
+    if (ind === "frete") {
       if (verificarCep) {
-        return 50
+        return 50;
       } else {
-        return 0
+        return 0;
       }
     }
-  }
+  };
 
   useEffect(() => {
     if (loginAuthentication.loging === false) {
       router.push("/login");
     }
   }, [loginAuthentication, router]);
-
-  useEffect(() => {
-    if (state.length === 0 ) {
-      router.push('/')
-    }
-  }, [router, state]);
 
 
   return (
