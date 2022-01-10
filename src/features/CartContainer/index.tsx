@@ -1,15 +1,14 @@
-import React, { FormEvent, useContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/dist/client/router'
+import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 
-import { AiFillCreditCard } from 'react-icons/ai'
-import { FaBarcode } from 'react-icons/fa'
-import { CgTrashEmpty } from 'react-icons/cg'
-import { BsCart3 } from "react-icons/bs"
-
-import { TextField } from '@mui/material'
+import { BsCart3 } from "react-icons/bs";
+import { AiFillCreditCard } from "react-icons/ai";
+import { FaBarcode } from "react-icons/fa";
+import { CgTrashEmpty } from "react-icons/cg";
 
 import {
   MainCartProducts,
+  MainContentCartProducts,
   SectionPaymentCartContainer,
   DeliveryCepContainer,
   DeliveryCepContent,
@@ -17,30 +16,38 @@ import {
   ButtonAdd,
   ProductTitle,
   ProductCartContainer,
+  PaymentTicketContainer,
+  PaymentCartContent,
   DeliveryInputContent,
   AsidePaymentCartContainer,
+  TotalOrderSummary,
+  FormOfPaymentContent,
   ProductContentCart,
+  PaymentTicketContent,
+  OrderSummaryContent,
   ProductPrice,
   ButtonReduce,
 } from "./styles";
-
-import axios from 'axios'
-import Button from '../../components/Button'
-import { ProductContainerContext } from '../ProductContainerContext'
+import { ProductContainerContext } from "../ProductContainerContext";
+import axios from "axios";
+import Button from "../../components/Button";
+import { TextField } from "@mui/material";
 
 interface ProductProps {
-  category: string
-  description: string
-  id: string
-  image: string
-  price: number
-  rating: [
+  category?: string;
+  description?: string;
+  id: number;
+  image: string;
+  price: number;
+  rating?: [
     {
-      rate: string
-      count: string
+      rate: string;
+      count: string;
     }
-  ]
-  title: string
+  ];
+  title: string;
+  // inventory: number;
+  // promotion_amount: string;
 }
 
 type cepProps = {
@@ -62,7 +69,7 @@ const HomeProductContainer = (): JSX.Element => {
   const [verificarCep, setVerificarCep] = useState(false);
   // const [sumValuesTotal, setSumValuesTotal] = useState(0);
 
-  // const [Product, setProduct] = useState<ProductProps[]>([]);
+  const [Product, setProduct] = useState<ProductProps[]>([]);
   const router = useRouter();
 
   const { state } = contextValue;
@@ -86,7 +93,7 @@ const HomeProductContainer = (): JSX.Element => {
     setRenderiza(!renderiza);
   };
 
-  const handleIncrement = (count: number, id: number, price: number) => {
+  const incrementar = (count: number, id: number, price: number) => {
     teste.map((pp) => {
       if (pp.id === id) {
         pp.count = count + 1;
@@ -98,7 +105,7 @@ const HomeProductContainer = (): JSX.Element => {
     });
   };
 
-  const handleDecrement = (count: number, id: number, price: number) => {
+  const decrementar = (count: number, id: number, price: number) => {
     if (count > 1) {
       teste.map((pp) => {
         if (pp.id === id) {
@@ -179,7 +186,6 @@ const HomeProductContainer = (): JSX.Element => {
     }
   }, [loginAuthentication, router]);
 
-
   return (
     <>
       <MainCartProducts>
@@ -188,7 +194,7 @@ const HomeProductContainer = (): JSX.Element => {
         </h1>
         <PaymenteContainer>
           <SectionPaymentCartContainer>
-          <ProductCartContainer>
+            <ProductCartContainer>
               {state.map((prod, index) => {
                 return (
                   <>
@@ -198,11 +204,11 @@ const HomeProductContainer = (): JSX.Element => {
                       <div>
                         <p>Quantidade</p>
                         <div>
-                          <ButtonReduce onClick={() => handleDecrement(prod.count, prod.id, prod.price)}>
+                          <ButtonReduce onClick={() => decrementar(prod.count, prod.id, prod.price)}>
                             -
                           </ButtonReduce>
                           <p>{prod.count}</p>
-                          <ButtonAdd onClick={() => handleIncrement(prod.count, prod.id, prod.price)}>
+                          <ButtonAdd onClick={() => incrementar(prod.count, prod.id, prod.price)}>
                             +
                           </ButtonAdd>
                         </div>
@@ -255,48 +261,62 @@ const HomeProductContainer = (): JSX.Element => {
           </SectionPaymentCartContainer>
 
           <AsidePaymentCartContainer $hasShipping={verificarCep}>
-            <div>
-              <h1>Resumo do Pedido</h1>
-              <p>
-                Subtotal:
-                <span>R$ {FormatedFavoriteCartValues('soma', state)?.toFixed(2)}</span>
-              </p>
-              <p>
-                Frete:
-                <span>R$ {FormatedFavoriteCartValues('frete', state)?.toFixed(2)}</span>
-              </p>
-              <h4>
-                TOTAL:
-                <span>R$ {FormatedFavoriteCartValues('total', state)?.toFixed(2)}</span>
-              </h4>
-            </div>
-            <p>
-              <AiFillCreditCard /> 3X R$
-              {FormatedFavoriteCartValues("dividido", state)?.toFixed(2)} s/
-              juros
-            </p>
-            <p>
-              <FaBarcode />
-              R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(2)} com
-              desconto de 10% à vista no boleto.
-            </p>
-
-            <div id="resume-buttons">
-              <Button onClick={() => {
-                router.push(`/Success`)
-                handleCleanAll()
-              }}>
-                Finalizar o Pedido
-              </Button>
-              <Button id="clear-cart-button" onClick={() => handleCleanAll()}>
-                Limpar o Carrinho
-              </Button>
-            </div>
+            <OrderSummaryContent>
+              <div>
+                <p>Subtotal:</p>
+                <span>
+                  R$ {FormatedFavoriteCartValues("soma", state)?.toFixed(2)}
+                </span>
+              </div>
+              <div>
+                <p>Frete:</p>
+                <span>
+                  R$ {FormatedFavoriteCartValues("frete", state)?.toFixed(2)}
+                </span>
+              </div>
+              <hr />
+              <TotalOrderSummary>
+                <h5>TOTAL:</h5>
+                <span>
+                  R$ {FormatedFavoriteCartValues("total", state)?.toFixed(2)}
+                </span>
+              </TotalOrderSummary>
+            </OrderSummaryContent>
+            <FormOfPaymentContent>
+              <div>
+                <PaymentCartContent>
+                  <AiFillCreditCard /> 3X R$ {FormatedFavoriteCartValues("dividido", state)?.toFixed(2)} <br />
+                  s/ juros
+                </PaymentCartContent>
+              </div>
+              <hr />
+              <PaymentTicketContainer>
+                  <FaBarcode />
+                <PaymentTicketContent>
+                  <span>R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(
+                    2
+                  )}</span>
+                  com desconto de 10% à vista no boleto.
+                </PaymentTicketContent>
+              </PaymentTicketContainer>
+            </FormOfPaymentContent>
+              <div id="resume-buttons">
+                <Button
+                  onClick={() => {
+                    router.push(`/Success`);
+                    handleCleanAll();
+                  }}
+                >
+                  Finalizar o Pedido
+                </Button>
+                <Button id="clear-cart-button" onClick={() => handleCleanAll()}>
+                  Limpar o Carrinho
+                </Button>
+              </div>
           </AsidePaymentCartContainer>
         </PaymenteContainer>
       </MainCartProducts>
     </>
-  )
-}
-
-export default HomeProductContainer
+  );
+};
+export default HomeProductContainer;
