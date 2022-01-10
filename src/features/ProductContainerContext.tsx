@@ -31,6 +31,7 @@ interface ProductProps {
   count: number
 }
 
+
 interface LoginAuthenticationProps {
   id?: string
   name?: string
@@ -38,23 +39,25 @@ interface LoginAuthenticationProps {
   loging: boolean
 }
 
-
 interface IProductContainerProps {
+  getAllProducts: (credentials?: ProductProps[]) => Promise<void>;
+
   contextValue: {
     state: ProductState[];
     dispatch: React.Dispatch<ProductAction>;
   };
 
-  loginAuthentication: LoginAuthenticationProps
-  setLoginAuthentication: React.Dispatch<React.SetStateAction<LoginAuthenticationProps>>
-
-  getAllProducts: (credentials?: ProductProps[]) => Promise<void>;
   products: ProductProps[];
   setProducs: React.Dispatch<React.SetStateAction<ProductProps[]>>;
 
   teste: ProductProps[];
   setTeste: React.Dispatch<React.SetStateAction<ProductProps[]>>;
 
+  favoriteCart: ProductProps[];
+  setFavoriteCart: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+
+  loginAuthentication: LoginAuthenticationProps
+  setLoginAuthentication: React.Dispatch<React.SetStateAction<LoginAuthenticationProps>>
 }
 
 let questionsFromStorage: ProductProps[]
@@ -71,12 +74,14 @@ if (process.browser) {
   LoginFromStorage = loginHasStorage ? JSON.parse(loginHasStorage) : []
 }
 
+
 const ProductContainerContext = createContext({} as IProductContainerProps);
 
 const ProductContainerProvider: React.FC = ({ children }) => {
-  const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
   const [products, setProducs] = useState<ProductProps[]>([]);
+  const [favoriteCart, setFavoriteCart] = useState<ProductProps[]>([]);
   const [teste, setTeste] = useState<ProductProps[]>([]);
+  const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
 
   const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
 
@@ -92,9 +97,8 @@ const ProductContainerProvider: React.FC = ({ children }) => {
     }
   }, [state, teste]);
 
-
   const getAllProducts = async () => {
-    const response = await axios.get("https://fakestoreapi.com/products");
+    const response = await axios.get("https://fakestoreapi.com/products/category/electronics");
     setProducs(response.data);
   };
 
@@ -105,15 +109,18 @@ const ProductContainerProvider: React.FC = ({ children }) => {
   return (
     <ProductContainerContext.Provider
       value={{
-        loginAuthentication,
-        setLoginAuthentication,
         getAllProducts,
         products,
         setProducs,
+        favoriteCart,
+        setFavoriteCart,
         teste,
         setTeste,
+        loginAuthentication,
+        setLoginAuthentication,
         contextValue,
-      }}>
+      }}
+    >
       {children}
     </ProductContainerContext.Provider>
   );
