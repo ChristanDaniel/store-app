@@ -5,6 +5,7 @@ import { BsCart3 } from "react-icons/bs";
 import { AiFillCreditCard } from "react-icons/ai";
 import { FaBarcode } from "react-icons/fa";
 import { CgTrashEmpty } from "react-icons/cg";
+import { BiXCircle } from 'react-icons/bi'
 
 import {
   MainCartProducts,
@@ -12,6 +13,7 @@ import {
   SectionPaymentCartContainer,
   DeliveryCepContainer,
   DeliveryCepContent,
+  ErrorCepContent,
   PaymenteContainer,
   ButtonAdd,
   ProductTitle,
@@ -22,6 +24,7 @@ import {
   AsidePaymentCartContainer,
   TotalOrderSummary,
   FormOfPaymentContent,
+  PaymenteTicketTotal,
   ProductContentCart,
   PaymentTicketContent,
   OrderSummaryContent,
@@ -46,8 +49,6 @@ interface ProductProps {
     }
   ];
   title: string;
-  // inventory: number;
-  // promotion_amount: string;
 }
 
 type cepProps = {
@@ -67,6 +68,7 @@ const HomeProductContainer = (): JSX.Element => {
   const [inputCEP, setInputCEP] = useState("");
   const [cepClient, setCepClient] = useState<cepProps[]>([]);
   const [verificarCep, setVerificarCep] = useState(false);
+  const [verificarCepErro, setVerificarCepErro] = useState(false);
   // const [sumValuesTotal, setSumValuesTotal] = useState(0);
 
   const [Product, setProduct] = useState<ProductProps[]>([]);
@@ -123,28 +125,24 @@ const HomeProductContainer = (): JSX.Element => {
 
   const handleDeliveryCEP = async (event: FormEvent) => {
     event.preventDefault();
-    if (inputCEP.length > 8) {
-      const response = await axios.get(
-        `http://viacep.com.br/ws/${inputCEP}/json/`
-      );
-      if (!response.data.erro) {
+    if (inputCEP.length >= 8) {
+      try {
+        const response = await axios.get(
+          `http://viacep.com.br/ws/${inputCEP}/json/`
+        );
         setCepClient([response.data]);
         setVerificarCep(true);
-      } else {
+        setVerificarCepErro(false)
+      } catch (error) {
         setCepClient([]);
         setVerificarCep(false);
-        console.log(response.data);
+        setVerificarCepErro(true)
       }
+
     } else {
       return;
     }
   };
-
-  useEffect(() => {
-    if (state.length === 0) {
-      router.push("/");
-    }
-  }, [router, state]);
 
   const FormatedFavoriteCartValues = (
     ind: string,
@@ -186,6 +184,13 @@ const HomeProductContainer = (): JSX.Element => {
     }
   }, [loginAuthentication, router]);
 
+  useEffect(() => {
+    if (state.length === 0) {
+      router.push("/");
+    }
+  }, [router, state, renderiza]);
+
+
   return (
     <>
       <MainCartProducts>
@@ -224,16 +229,22 @@ const HomeProductContainer = (): JSX.Element => {
                   </>
                 );
               })}
+              <Button id="clear-cart-button" onClick={() => handleCleanAll()}>
+              <BiXCircle /> Limpar o Carrinho
+              </Button>
             </ProductCartContainer>
             <DeliveryCepContainer>
               <DeliveryInputContent>
-                <TextField
-                  placeholder="Qual CEP de entrega?"
-                  value={inputCEP}
-                  label="CEP"
-                  variant="outlined"
-                  onChange={(event) => setInputCEP(event.target.value)}
-                />
+                <div>
+                  <TextField
+                    placeholder="Qual CEP de entrega?"
+                    value={inputCEP}
+                    label="CEP"
+                    variant="outlined"
+                    onChange={(event) => setInputCEP(event.target.value)}
+                  />
+                    {verificarCepErro === false ? (<></>) : (<ErrorCepContent><BiXCircle />Não foi possível encontrar nenhum CEP correspondente.</ErrorCepContent>)}
+                </div>
                 <Button onClick={handleDeliveryCEP}>CALCULAR</Button>
               </DeliveryInputContent>
               {verificarCep &&
@@ -293,9 +304,9 @@ const HomeProductContainer = (): JSX.Element => {
               <PaymentTicketContainer>
                   <FaBarcode />
                 <PaymentTicketContent>
-                  <span>R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(
+                  <PaymenteTicketTotal>R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(
                     2
-                  )}</span>
+                  )}</PaymenteTicketTotal>
                   com desconto de 10% à vista no boleto.
                 </PaymentTicketContent>
               </PaymentTicketContainer>
@@ -304,13 +315,9 @@ const HomeProductContainer = (): JSX.Element => {
                 <Button
                   onClick={() => {
                     router.push(`/Success`);
-                    handleCleanAll();
                   }}
                 >
                   Finalizar o Pedido
-                </Button>
-                <Button id="clear-cart-button" onClick={() => handleCleanAll()}>
-                  Limpar o Carrinho
                 </Button>
               </div>
           </AsidePaymentCartContainer>
