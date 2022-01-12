@@ -65,31 +65,14 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
                 </div>
               </UserContentFromHeader>
               <ButtonCartFavorite
-                onClick={() => {
-                  setMouseOver(!mouseOver);
-                }}
+                onClick={() => handleLogout()}
               >
-                {mouseOver === true ? (
-                  <UserMouverOver>
-                    <button>
-                      <AiOutlineUser /> Minha Conta
-                    </button>
-                    <button>
-                      <AiFillQuestionCircle /> Central de Atendimento{" "}
-                    </button>
-                    <button onClick={() => handleLogout()}>
-                      <RiLogoutBoxRLine /> SAIR{" "}
-                    </button>
-                  </UserMouverOver>
-                ) : (
-                  <></>
-                )}
-                <IoIosArrowDown />
+                <RiLogoutBoxRLine /> Sair
               </ButtonCartFavorite>
             </>
           ) : (
               <UserContent onClick={() => router.push("/login")}>
-                <FiUser /> Conta{" "}
+                <FiUser /> Conta
               </UserContent>
           )}
 

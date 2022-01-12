@@ -111,7 +111,7 @@ const ButtonCartFavorite = styled.div`
   text-transform: capitalize;
   /* text-decoration: none; */
   align-self: center;
-  font-size: 14px;
+  font-size: 13px;
   height: 30px;
 
   background: transparent;
@@ -132,6 +132,7 @@ const ButtonCartFavorite = styled.div`
     color: #3498db;
     height: 20px;
     width: 20px;
+    margin-right: 3px;
   }
 `;
 const NumberCartFavorite = styled.p`

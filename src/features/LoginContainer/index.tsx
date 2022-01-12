@@ -22,16 +22,12 @@ import {
 import { TextField } from "@mui/material";
 
 const HomeProductContainer = (): JSX.Element => {
-  // const successToast = (message: string) => toast.success(message);
-  // const failtToast = (message: string) => toast.error(message);
-
   const { loginAuthentication, setLoginAuthentication } = useContext(
     ProductContainerContext
   );
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  // const [authentication, setAuthentication] = useState(['']);
   const router = useRouter();
 
   useEffect(() => {
