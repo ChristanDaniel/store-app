@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const MainContainer = styled.main``;
 
-const Banner = styled.img`
+const Banner = styled.div`
   box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
   border-top: 2.5px solid #3498db;
   border-bottom: 5px solid #3498db;

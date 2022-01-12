@@ -4,7 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 
 import Button from '../../components/Button'
 import { Footers } from '../../components/Footers'
-import { Slider } from '@mui/material'
+import Slider from '../../components/Slider'
 
 import { ProductContainerContext } from '../ProductContainerContext'
 

@@ -10,6 +10,10 @@ import { OpenModalFavoriteCart } from "../src/components/OpenModalCart";
 import { ProductContainerProvider } from "../src/features/ProductContainerContext";
 
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 const Header = dynamic(() => import('../src/components/Header'), {
   ssr: false
 })

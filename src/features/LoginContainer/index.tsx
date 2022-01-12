@@ -1,10 +1,13 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
-import { IoIosUnlock } from 'react-icons/io'
 
-// import { ToastContainer, toast } from "react-toastify";
-// import Button from "../../components/Button";
-// import { ProductContainerContext } from "../ProductContainerContext";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+import Button from "../../components/Button";
+import { ProductContainerContext } from "../ProductContainerContext";
+
+import { IoIosUnlock } from 'react-icons/io'
 
 import {
   LoginMainContainer,
@@ -16,46 +19,81 @@ import {
   LoginButtonContent,
   LoginInputContent,
 } from "./styles";
-import Button from "../../components/Button";
+import { TextField } from "@mui/material";
 
 const HomeProductContainer = (): JSX.Element => {
+  // const successToast = (message: string) => toast.success(message);
+  // const failtToast = (message: string) => toast.error(message);
+
+  const { loginAuthentication, setLoginAuthentication } = useContext(
+    ProductContainerContext
+  );
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   // const [authentication, setAuthentication] = useState(['']);
   const router = useRouter();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (loginAuthentication.loging) {
+      router.push("/");
+    }
+  }, [loginAuthentication, router]);
 
   const handleSubmitForm = (event: FormEvent) => {
     event.preventDefault();
     const id = Math.random().toString();
 
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/.test(email)) {
-      // return failtToast("Informe email válido exemplo@mail.com");
+      return toast.error('Informe email válido exemplo@email.com', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }
-    // setLoginAuthentication({ id: id, name: name, email: email, loging: true});
-    // if(!/^.{8,}/.test(name)) {
-    //   return failtToast('Sua senha deve conter 8 caracteres ou mais')
-    // }
-    // successToast("Usuário logado!") && setTimeout(() => router.push("/"), 2000);
+    if(!/^.{6,}/.test(name)) {
+      return toast.error('Seu Nome deve conter 6 caracteres ou mais', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    setLoginAuthentication({ id: id, name: name, email: email, loging: true });
+    toast.success('Usuário logado!', {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    }) && setTimeout(() => router.push("/"), 3000);
   };
 
-  const handleInputValidations = () => {};
-
+  useEffect(() => {
+    localStorage.setItem("authentication", JSON.stringify(loginAuthentication));
+  }, [loginAuthentication]);
 
   return (
     <>
       <LoginMainContainer>
         <LoginMessageContent>
           <LoginMessage>Login</LoginMessage>
-          <span>sou cliente</span>
+          <span>do cliente</span>
           <LoginMessageInformation>
             <p>
-              Olá! Se você já comprou na <br />
-              loja da <span>Ig.Store</span> antes, <br />
-              por favor, informe seu e-mail <br />
-              e name. <br />
+              Olá! Se você ainda não comprou <br />
+              na loja da <span>Ig.Store</span> antes, <br />
+              por favor, informe seu Name <br />
+              e E-mail. <br />
             </p>
           </LoginMessageInformation>
         </LoginMessageContent>
@@ -87,10 +125,19 @@ const HomeProductContainer = (): JSX.Element => {
             </LoginButtonContent>
           </form>
         </LoginCartContent>
-        {/* <ToastContainer autoClose={5000} position="bottom-center" /> */}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </LoginMainContainer>
     </>
   );
 };
-
-export default HomeProductContainer
+export default HomeProductContainer;
