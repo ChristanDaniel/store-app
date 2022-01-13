@@ -31,11 +31,10 @@ interface HeaderProps {
 }
 
 const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
-  const { teste, loginAuthentication, setLoginAuthentication } = useContext(
+  const { productItens, loginAuthentication, setLoginAuthentication } = useContext(
     ProductContainerContext
   );
   const [renderiza, setRenderiza] = useState(true);
-  const [mouseOver, setMouseOver] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("authentication");
@@ -79,10 +78,10 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
           <BorderLeft />
           <ButtonCartFavorite onClick={() => onOpenModalCart()}>
             <BsCart3 />
-            {teste.length === 0 ? (
+            {productItens.length === 0 ? (
               <></>
             ) : (
-              <NumberCartFavorite>{teste.length}</NumberCartFavorite>
+              <NumberCartFavorite>{productItens.length}</NumberCartFavorite>
             )}
           </ButtonCartFavorite>
         </UserContainer>

@@ -61,7 +61,7 @@ type cepProps = {
 };
 
 const HomeProductContainer = (): JSX.Element => {
-  const { contextValue, loginAuthentication, teste, setTeste } = useContext(
+  const { contextValue, loginAuthentication, productItens, setProductItens } = useContext(
     ProductContainerContext
   );
   const [renderiza, setRenderiza] = useState(true);
@@ -79,8 +79,8 @@ const HomeProductContainer = (): JSX.Element => {
   const handleCleanAll = () => {
     router.push("/");
     localStorage.removeItem("state");
-    teste.splice(0, 1000);
-    setTeste(teste);
+    productItens.splice(0, 1000);
+    setProductItens(productItens);
     setRenderiza(!renderiza);
   };
 
@@ -96,7 +96,7 @@ const HomeProductContainer = (): JSX.Element => {
   };
 
   const incrementar = (count: number, id: number, price: number) => {
-    teste.map((pp) => {
+    productItens.map((pp) => {
       if (pp.id === id) {
         pp.count = count + 1;
         pp.price = price + pp.price;
@@ -109,10 +109,10 @@ const HomeProductContainer = (): JSX.Element => {
 
   const decrementar = (count: number, id: number, price: number) => {
     if (count > 1) {
-      teste.map((pp) => {
-        if (pp.id === id) {
-          pp.count = count - 1;
-          pp.price = price * 0.5;
+      productItens.map((prod) => {
+        if (prod.id === id) {
+          prod.count = count - 1;
+          prod.price = price * 0.5;
 
           localStorage.setItem("state", JSON.stringify(state));
           setRenderiza(!renderiza);

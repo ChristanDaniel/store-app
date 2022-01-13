@@ -39,7 +39,7 @@ export function OpenModalFavoriteCart({
   onRequestClose,
 }: OpenModalFavoriteCartProps) {
   const router = useRouter();
-  const { contextValue, teste, setTeste } = useContext(ProductContainerContext);
+  const { contextValue, productItens, setProductItens, loginAuthentication} = useContext(ProductContainerContext);
   const [Prod, setProd] = useState<number>(0);
   const [renderiza, setRenderiza] = useState(true);
 
@@ -49,8 +49,8 @@ export function OpenModalFavoriteCart({
 
   const handleCleanAll = () => {
     localStorage.removeItem("state");
-    teste.splice(0, 1000);
-    setTeste(teste);
+    productItens.splice(0, 1000);
+    setProductItens(productItens);
     setRenderiza(!renderiza);
   };
 
@@ -70,15 +70,20 @@ export function OpenModalFavoriteCart({
   };
 
   const handleCompleteOrder = (onRequestClose: () => void) => {
-    router.push("/Cart");
-    onRequestClose();
+    if ( loginAuthentication.loging) {
+      router.push("/Cart");
+      onRequestClose();
+    } else {
+      router.push('/login')
+      onRequestClose();
+    }
   };
 
   useEffect(() => {
     const { state } = contextValue;
     console.log("DENTRO DO EFFECT", state);
-    setTeste(state);
-  }, [contextValue, setTeste]);
+    setProductItens(state);
+  }, [contextValue, setProductItens]);
 
   return (
     <Modal
@@ -99,13 +104,13 @@ export function OpenModalFavoriteCart({
         <HeadModalContent>
           <div>
             <h3>Meu Carrinho</h3>
-            <span>Produtos - {teste.length}</span>
+            <span>Produtos - {productItens.length}</span>
           </div>
           <button onClick={() => handleCleanAll()}>
             <IoMdTrash /> Remover Tudo
           </button>
         </HeadModalContent>
-        {teste.length === 0 ? (
+        {productItens.length === 0 ? (
           <NoValueCart>
             <h3>CARRINHO VAZIO</h3>
             <MdOutlineRemoveShoppingCart />
@@ -113,15 +118,15 @@ export function OpenModalFavoriteCart({
           </NoValueCart>
         ) : (
           <BodyModalContent>
-            {teste &&
-              teste?.map((test, index) => {
+            {productItens &&
+              productItens?.map((Prod, index) => {
                 return (
                   <>
-                    <ProductDivContent key={test.id + index}>
-                      <img src={`${test.image}`} alt={`${test.title}`} />
-                      <h4>{test.title}</h4>
+                    <ProductDivContent key={Prod.id + index}>
+                      <img src={`${Prod.image}`} alt={`${Prod.title}`} />
+                      <h4>{Prod.title}</h4>
                       <AmountProductContent>
-                        <p>R$ {test.price.toFixed(2)}</p>
+                        <p>R$ {Prod.price.toFixed(2)}</p>
                         <button
                           onClick={() => DeleteProductFavoriteCart(index)}
                         >
@@ -138,7 +143,7 @@ export function OpenModalFavoriteCart({
         <FooterModalContent>
           <div>
             <h5>Valor Total</h5>
-            <h2>R$ {FormatedFavoriteCartValues(teste).toFixed(2)}</h2>
+            <h2>R$ {FormatedFavoriteCartValues(productItens).toFixed(2)}</h2>
           </div>
           <Button onClick={() => handleCompleteOrder(onRequestClose)}>
             Finalizar Pedido

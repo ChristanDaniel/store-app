@@ -18,8 +18,8 @@ import {
 import { ProductContainerContext } from '../ProductContainerContext'
 import axios from 'axios'
 import { Footers } from '../../components/Footers'
-// import CircularProgress from "@mui/material/CircularProgress";
-// import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+
 import { BsFillLightningChargeFill, BsFillCreditCardFill } from 'react-icons/bs'
 import { FaBarcode } from 'react-icons/fa'
 import Button from '../../components/Button'

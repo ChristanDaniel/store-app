@@ -7,13 +7,13 @@ import profilePic from "../../../public/PedidoConcluído.svg";
 
 
 const SucessContainer = (): JSX.Element => {
-  const { teste, setTeste} = useContext( ProductContainerContext );
+  const { productItens, setProductItens} = useContext( ProductContainerContext );
   const [renderiza, setRenderiza] = useState(true);
 
   const handleCleanCartFavorite  = () => {
     localStorage.removeItem("state");
-    teste.splice(0, 1000);
-    setTeste(teste);
+    productItens.splice(0, 1000);
+    setProductItens(productItens);
     setRenderiza(!renderiza);
   };
 

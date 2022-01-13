@@ -50,8 +50,8 @@ interface IProductContainerProps {
   products: ProductProps[];
   setProducs: React.Dispatch<React.SetStateAction<ProductProps[]>>;
 
-  teste: ProductProps[];
-  setTeste: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+  productItens: ProductProps[];
+  setProductItens: React.Dispatch<React.SetStateAction<ProductProps[]>>;
 
   favoriteCart: ProductProps[];
   setFavoriteCart: React.Dispatch<React.SetStateAction<ProductProps[]>>;
@@ -80,7 +80,7 @@ const ProductContainerContext = createContext({} as IProductContainerProps);
 const ProductContainerProvider: React.FC = ({ children }) => {
   const [products, setProducs] = useState<ProductProps[]>([]);
   const [favoriteCart, setFavoriteCart] = useState<ProductProps[]>([]);
-  const [teste, setTeste] = useState<ProductProps[]>([]);
+  const [productItens, setProductItens] = useState<ProductProps[]>([]);
   const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
 
   const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
@@ -95,7 +95,7 @@ const ProductContainerProvider: React.FC = ({ children }) => {
     } else {
       localStorage.setItem("state", JSON.stringify(['']));
     }
-  }, [state, teste]);
+  }, [state, productItens]);
 
   const getAllProducts = async () => {
     const response = await axios.get("https://fakestoreapi.com/products/category/electronics");
@@ -114,8 +114,8 @@ const ProductContainerProvider: React.FC = ({ children }) => {
         setProducs,
         favoriteCart,
         setFavoriteCart,
-        teste,
-        setTeste,
+        productItens,
+        setProductItens,
         loginAuthentication,
         setLoginAuthentication,
         contextValue,
