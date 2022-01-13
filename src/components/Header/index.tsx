@@ -55,7 +55,6 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
         <UserContainer>
           {loginAuthentication.loging ? (
             <>
-              {/* <Image src={AvatarMale} alt="Fechar Modal" /> */}
               <UserContentFromHeader>
                 <FaUserCircle />
                 <div>
