@@ -12,9 +12,7 @@ const CartPage: NextPage = () => {
       <Head>
         <title>Ig.Store | Cart</title>
       </Head>
-      <div>
-        <CartContainer />
-      </div>
+      <CartContainer />
     </>
   );
 };

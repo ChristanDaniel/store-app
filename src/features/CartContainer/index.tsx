@@ -36,6 +36,9 @@ import axios from "axios";
 import Button from "../../components/Button";
 import { TextField } from "@mui/material";
 
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 interface ProductProps {
   category?: string;
   description?: string;
@@ -178,6 +181,24 @@ const HomeProductContainer = (): JSX.Element => {
     }
   };
 
+  const handleCheckCEP = () => {
+    if (verificarCep) {
+      router.push(`/Success`);
+    } else {
+      toast.error('Por favor informe um CEP', {
+        position: "bottom-right",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+
+  }
+
   useEffect(() => {
     if (loginAuthentication.loging === false) {
       router.push("/login");
@@ -314,7 +335,7 @@ const HomeProductContainer = (): JSX.Element => {
               <div id="resume-buttons">
                 <Button
                   onClick={() => {
-                    router.push(`/Success`);
+                    handleCheckCEP()
                   }}
                 >
                   Finalizar o Pedido
@@ -323,6 +344,17 @@ const HomeProductContainer = (): JSX.Element => {
           </AsidePaymentCartContainer>
         </PaymenteContainer>
       </MainCartProducts>
+      <ToastContainer
+          position="bottom-right"
+          autoClose={3500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     </>
   );
 };

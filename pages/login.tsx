@@ -1,9 +1,6 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-
-// const MenuButtons = dynamic(() => import("../src/components/Menu"), {
-//   ssr: false,
-// });
+import Head from 'next/head'
 
 const LoginContainer = dynamic(() => import("../src/features/LoginContainer"), {
   ssr: false,
@@ -12,9 +9,11 @@ const LoginContainer = dynamic(() => import("../src/features/LoginContainer"), {
 const LoginPage: NextPage = () => {
   return (
     <>
-      <div>
-          <LoginContainer />
-      </div>
+      <Head>
+        <title>Ig.Store | Login</title>
+      </Head>
+      <LoginContainer />
+
     </>
   );
 };
