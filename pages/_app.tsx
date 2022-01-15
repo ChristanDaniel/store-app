@@ -30,10 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   return (
     <>
-      <GlobalStyle />
       <ProductContainerProvider>
         <Header onOpenModalCart={handleOpenCartModal} />
         <Component {...pageProps} />
+        <GlobalStyle />
         <OpenModalFavoriteCart isOpen={isOpenModalFavoriteCart} onRequestClose={handleCloseCartModal} />
       </ProductContainerProvider>
     </>

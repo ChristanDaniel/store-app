@@ -21,7 +21,7 @@ import {
 } from "./styles";
 import { TextField } from "@mui/material";
 
-const HomeProductContainer = (): JSX.Element => {
+const LoginProductContainer = (): JSX.Element => {
   const { loginAuthentication, setLoginAuthentication } = useContext(
     ProductContainerContext
   );
@@ -136,4 +136,4 @@ const HomeProductContainer = (): JSX.Element => {
     </>
   );
 };
-export default HomeProductContainer;
+export default LoginProductContainer;

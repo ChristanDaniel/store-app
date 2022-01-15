@@ -1,4 +1,4 @@
-export type Reducer<State, Action> = (
+export type Reducer<State> = (
   state: ProductState[],
   action: ProductAction
 ) => State;

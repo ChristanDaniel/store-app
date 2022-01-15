@@ -99,24 +99,32 @@ const HomeProductContainer = (): JSX.Element => {
   };
 
   const incrementar = (count: number, id: number, price: number) => {
-    productItens.map((pp) => {
-      if (pp.id === id) {
-        pp.count = count + 1;
-        pp.price = price + pp.price;
+    if (count < 6) {
+      productItens.map((prod) => {
+        if (prod.id === id) {
+          const originalCountValue = price / prod.count;
+          const sumPrice = originalCountValue + prod.price;
+          prod.price = sumPrice
 
-        localStorage.setItem("state", JSON.stringify(state));
-        setRenderiza(!renderiza);
-      }
-    });
+          prod.count = count + 1;
+          localStorage.setItem("state", JSON.stringify(state));
+          setRenderiza(!renderiza);
+        }
+      });
+    } else {
+      return
+    }
   };
 
   const decrementar = (count: number, id: number, price: number) => {
     if (count > 1) {
       productItens.map((prod) => {
         if (prod.id === id) {
-          prod.count = count - 1;
-          prod.price = price * 0.5;
+          const originalCountValue = price / prod.count;
+          const sumPrice = prod.price - originalCountValue;
+          prod.price = sumPrice
 
+          prod.count = count - 1;
           localStorage.setItem("state", JSON.stringify(state));
           setRenderiza(!renderiza);
         }
@@ -143,7 +151,9 @@ const HomeProductContainer = (): JSX.Element => {
       }
 
     } else {
-      return;
+      setCepClient([]);
+      setVerificarCep(false);
+      setVerificarCepErro(true)
     }
   };
 
@@ -195,8 +205,14 @@ const HomeProductContainer = (): JSX.Element => {
         progress: undefined,
       });
     }
+  }
 
-
+  const handleClickEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key == 'Enter') {
+      return handleDeliveryCEP(event)
+    } else {
+      return
+    }
   }
 
   useEffect(() => {
@@ -263,6 +279,7 @@ const HomeProductContainer = (): JSX.Element => {
                     label="CEP"
                     variant="outlined"
                     onChange={(event) => setInputCEP(event.target.value)}
+                    onKeyPress={(event) => handleClickEnter(event)}
                   />
                     {verificarCepErro === false ? (<></>) : (<ErrorCepContent><BiXCircle />Não foi possível encontrar nenhum CEP correspondente.</ErrorCepContent>)}
                 </div>

@@ -88,7 +88,7 @@ const HomeContainer = (): JSX.Element => {
         <MainContent>
           {products.map((product, index) => {
             return (
-              <MainContentDiv key={product.id + index}>
+              <MainContentDiv key={product.id}>
                 <img src={`${product.image}`} alt={`${product.title}`} />
 
                 <h3>{product.title}</h3>
