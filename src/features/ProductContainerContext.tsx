@@ -84,7 +84,7 @@ const ProductContainerProvider: React.FC = ({ children }) => {
   const [productItens, setProductItens] = useState<ProductProps[]>([]);
   const [loginAuthentication, setLoginAuthentication] = useState<LoginAuthenticationProps>(LoginFromStorage);
 
-  const [state, dispatch] = useReducer<(state: ProductState[], action: ProductAction) => ProductState[]>(AppReducer, questionsFromStorage || initialState);
+  const [state, dispatch] = useReducer(AppReducer, questionsFromStorage || initialState);
 
   const contextValue = useMemo(() => {
     return { state, dispatch };

@@ -3,13 +3,13 @@ export type Reducer<State> = (
   action: ProductAction
 ) => State;
 
-export const initialState: ProductState = {
+export const initialState: ProductState[] = [{
   id: 0,
   title: "",
   image: "",
   price: 0,
   count: 0,
-};
+}];
 
 export interface ProductState {
   id: number;
@@ -37,15 +37,16 @@ export type ProductAction =
       count: number;
     };
 
-export const AppReducer = (state: ProductState[], action: ProductAction) => {
+export const AppReducer = (state: ProductState[], action: ProductAction): ProductState[] => {
   switch (action.type) {
     case "init_stored": {
-      return {
+      return [{
         id: action.id,
         title: action.title,
         image: action.image,
         price: action.price,
-      };
+        count: action.count
+      }];
     }
     case "add_product": {
       return [
