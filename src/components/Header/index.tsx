@@ -1,14 +1,11 @@
 import React, { useContext, useState } from "react";
+
 import { BsCart3 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { FiUser } from "react-icons/fi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
-import { AiFillQuestionCircle, AiOutlineUser } from "react-icons/ai";
 import { GiShop } from "react-icons/gi";
 
-import Image from "next/image";
-import AvatarMale from "../../../public/male.svg";
 
 import {
   Headers,

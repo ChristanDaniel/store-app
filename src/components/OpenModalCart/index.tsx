@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Modal from "react-modal";
 import {
   ModalContainer,
@@ -37,15 +38,11 @@ export type ProductProps = {
 export function OpenModalFavoriteCart({
   isOpen,
   onRequestClose,
-}: OpenModalFavoriteCartProps) {
-  const router = useRouter();
+}: OpenModalFavoriteCartProps): JSX.Element {
   const { contextValue, productItens, setProductItens, loginAuthentication} = useContext(ProductContainerContext);
-  const [Prod, setProd] = useState<number>(0);
+  const router = useRouter();
   const [renderiza, setRenderiza] = useState(true);
 
-  const getValue = () => {};
-
-  const { state, dispatch } = contextValue;
 
   const handleCleanAll = () => {
     localStorage.removeItem("state");
@@ -81,7 +78,6 @@ export function OpenModalFavoriteCart({
 
   useEffect(() => {
     const { state } = contextValue;
-    console.log("DENTRO DO EFFECT", state);
     setProductItens(state);
   }, [contextValue, setProductItens]);
 

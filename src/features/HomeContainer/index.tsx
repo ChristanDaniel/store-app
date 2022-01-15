@@ -31,8 +31,8 @@ interface ProductProps {
   price: number;
   rating?: [
     {
-      rate: string;
-      count: string;
+      rate?: string;
+      count?: string;
     }
   ];
   title: string;
@@ -88,37 +88,39 @@ const HomeContainer = (): JSX.Element => {
         <MainContent>
           {products.map((product, index) => {
             return (
-              <MainContentDiv key={product.id}>
-                <img src={`${product.image}`} alt={`${product.title}`} />
+              <>
+                <MainContentDiv key={index + product.id.toString()}>
+                  <img src={`${product.image}`} alt={`${product.title}`} />
 
-                <h3>{product.title}</h3>
-                <ProdPriceValueSpan>
-                  de R$ {product.price.toFixed(2)} por
-                </ProdPriceValueSpan>
-                <ProdPriceValue>
-                  R$ {FormatedValues("discount", product.price)}{" "}
-                  <span>à vista no boleto</span>
-                </ProdPriceValue>
-                <InstallmentAmount>
-                  ou até 3x de R$ {FormatedValues("divided", product.price)}
-                </InstallmentAmount>
-                <ButtonContainerBuy>
-                  <Button onClick={() => router.push(`/Product/${product.id}`)}>
-                    <CgDetailsMore /> Ver detalhes
-                  </Button>
+                  <h3>{product.title}</h3>
+                  <ProdPriceValueSpan>
+                    de R$ {product.price.toFixed(2)} por
+                  </ProdPriceValueSpan>
+                  <ProdPriceValue>
+                    R$ {FormatedValues("discount", product.price)}{" "}
+                    <span>à vista no boleto</span>
+                  </ProdPriceValue>
+                  <InstallmentAmount>
+                    ou até 3x de R$ {FormatedValues("divided", product.price)}
+                  </InstallmentAmount>
+                  <ButtonContainerBuy>
+                    <Button onClick={() => router.push(`/Product/${product.id}`)}>
+                      <CgDetailsMore /> Ver detalhes
+                    </Button>
 
-                  <Button
-                    onClick={() => handleAddCart(product)}
-                    $disabled={handleCheckIfHasOnCart(product.id)}
-                  >
-                    {handleCheckIfHasOnCart(product.id) ? (
-                      <BsCartCheckFill />
-                    ) : (
-                      <BsCart3 />
-                    )}
-                  </Button>
-                </ButtonContainerBuy>
-              </MainContentDiv>
+                    <Button
+                      onClick={() => handleAddCart(product)}
+                      $disabled={handleCheckIfHasOnCart(product.id)}
+                    >
+                      {handleCheckIfHasOnCart(product.id) ? (
+                        <BsCartCheckFill />
+                      ) : (
+                        <BsCart3 />
+                      )}
+                    </Button>
+                  </ButtonContainerBuy>
+                </MainContentDiv>
+              </>
             );
           })}
         </MainContent>

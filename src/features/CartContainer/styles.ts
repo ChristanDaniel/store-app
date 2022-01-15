@@ -196,10 +196,10 @@ const FormOfPaymentContent = styled.div`
     color: #000;
   }
 
-  span {
+  /* span {
     font-size: 15px;
     color: rgba(0,160,0,.1);
-  }
+  } */
 
   div {
     margin: 4px 0px 14px 10px;
@@ -232,7 +232,7 @@ const PaymentTicketContent = styled.p`
   }
 `;
 
-const PaymenteTicketTotal = styled.p`
+const PaymenteTicketTotal = styled.span`
   font-size: 16px;
   font-weight: 550;
   color: #00a000;

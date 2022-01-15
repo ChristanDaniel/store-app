@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 
