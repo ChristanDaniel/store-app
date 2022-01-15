@@ -1,6 +1,11 @@
 <h1 align="center">
-  Store-app
+  <img width='70px'src="https://user-images.githubusercontent.com/80167149/149632640-29d93069-baa5-4e74-8e67-4f90aa04a6f1.png" align="center"/>
+   Store-app
 </h1>
+
+## 💻 Projeto
+Projeto Ig.Store é uma loja de produtos eletrônicos que foi utilizado para treinar as ferramentas/tecnologias descritas abaixo:
+
 
 ## 🚀 Tecnologias
 
@@ -16,20 +21,31 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## Estrutura
 
 - `pages/` -> Pasta de rotas do app.
-- `public/` -> Pasta de Imagens
-- `src/` -> 
-- `src/components` -> Pasta de todos componentes do app
-- `src/Features` -> Pasta de todas Features do app
-- `src/features/ProductContainerContext.tsx` -> arquivo que compartilha dados entre todos os componentes/features do app, utilizando hook useContext do react
+- `public/` -> Pasta de Imagens.
+- `src/` 
+- `src/components` -> Pasta de todos componentes do app.
+- `src/Features` -> Pasta de todas Features do app.
+- `src/features/ProductContainerContext.tsx` -> arquivo que compartilha dados entre todos os componentes/features do app, utilizando hook useContext do react.
 
 ---
 - `pages/` -> Pasta de rotas do app.
-- `pages/App.tsx` -> Arquivo principal
-- `pages/index/` -> página Home
-- `pages/Login` -> página de login
-- `pages/Cart` -> página do carrinho do cliente
-- `pages/Sucess` -> página da compra finalizada com sucesso pelo cliente
+- `pages/App.tsx` -> Arquivo principal.
+- `pages/index/` -> página Home.
+- `pages/Login` -> página de login.
+- `pages/Cart` -> página do carrinho do cliente.
+- `pages/Sucess` -> página da compra finalizada com sucesso pelo cliente.
+- `pages/Product/[id].tsx` -> página de detalhes do produto.
 
+
+### 🔗 Funcionalidades
+
+- [x] **O usuário pode fazer login com Nome e Email.**
+- [x] **O usuário pode Salvar o item favorito no carrinho.**
+- [x] **O usuário pode abrir Modal para verificar os itens salvo**: Biblioteca [React-Modal](https://github.com/reactjs/react-modal) utilizada para criação do modal.
+- [x] **Ao fechar a janela do navegador o login e os itens favoritos serão armazenadas e quando o Usuário retornar, os dados serão recuperados.**
+- [x] **O usuário pode Excluir um item no carrinho.**
+- [x] **O usuário pode Excluir Todos itens do carrinho ao mesmo tempo.**
+- [x] **O usuário pode verificar seu CEP.** : API [ViaCEP](https://viacep.com.br) utilizada para essa verificação.
 
 
 ## 📥 Instalação e execução
