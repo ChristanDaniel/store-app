@@ -7,6 +7,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiShop } from "react-icons/gi";
 
 
+
 import {
   Headers,
   UserContainer,
@@ -17,7 +18,7 @@ import {
   BorderLeft,
   ButtonCartFavorite,
   NumberCartFavorite,
-  SvgHeader,
+  ImgHeader,
 } from "./styles";
 
 import router from "next/dist/client/router";
@@ -43,12 +44,12 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
   return (
     <>
       <Headers>
-        <SvgHeader>
-          <GiShop />
+        <ImgHeader>
+
           <h1 onClick={() => router.push("/")}>
             Ig<span>.</span>Store
           </h1>
-        </SvgHeader>
+        </ImgHeader>
         <UserContainer>
           {loginAuthentication.loging ? (
             <>

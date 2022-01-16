@@ -88,7 +88,7 @@ const LoginProductContainer = (): JSX.Element => {
             <p>
               Olá! Se você ainda não comprou <br />
               na loja da <span>Ig.Store</span> antes, <br />
-              por favor, informe seu Name <br />
+              por favor, informe seu Nome <br />
               e E-mail. <br />
             </p>
           </LoginMessageInformation>
@@ -99,7 +99,7 @@ const LoginProductContainer = (): JSX.Element => {
               <div>
                 <TextField
                   id="text-field"
-                  label="Name"
+                  label="Nome"
                   variant="outlined"
                   value={name}
                   onChange={(event) => setName(event.target.value)}

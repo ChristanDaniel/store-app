@@ -162,7 +162,7 @@ const HomeProductContainer = (): JSX.Element => {
     ind: string,
     products: ProductProps[]
   ) => {
-    if (ind === "soma") {
+    if (ind === "sum") {
       return products.reduce((a, b) => a + b.price, 0);
     }
     if (ind === "total") {
@@ -171,19 +171,19 @@ const HomeProductContainer = (): JSX.Element => {
       }
       return products.reduce((a, b) => a + b.price, 0);
     }
-    if (ind === "dividido") {
+    if (ind === "divided") {
       if (verificarCep) {
         return products.reduce((a, b) => a + b.price, 50) / 3;
       }
       return products.reduce((a, b) => a + b.price, 0) / 3;
     }
-    if (ind === "desconto") {
+    if (ind === "discount") {
       if (verificarCep) {
         return products.reduce((a, b) => a + b.price, 50) * 0.9;
       }
       return products.reduce((a, b) => a + b.price, 0) * 0.9;
     }
-    if (ind === "frete") {
+    if (ind === "freight") {
       if (verificarCep) {
         return 50;
       } else {
@@ -233,7 +233,7 @@ const HomeProductContainer = (): JSX.Element => {
     <>
       <MainCartProducts>
         <h1>
-          01036-970 CARRINHO <BsCart3 />
+          CARRINHO <BsCart3 />
         </h1>
         <PaymenteContainer>
           <SectionPaymentCartContainer>
@@ -282,7 +282,15 @@ const HomeProductContainer = (): JSX.Element => {
                     onChange={(event) => setInputCEP(event.target.value)}
                     onKeyPress={(event) => handleClickEnter(event)}
                   />
-                    {verificarCepErro === false ? (<></>) : (<ErrorCepContent><BiXCircle />Não foi possível encontrar nenhum CEP correspondente.</ErrorCepContent>)}
+                    {verificarCepErro === false ? (
+                    <>
+                      
+                    </>
+                    ) : (
+                    <ErrorCepContent>
+                      <BiXCircle />Não foi possível encontrar nenhum CEP correspondente.
+                    </ErrorCepContent>
+                    )}
                 </div>
                 <Button onClick={handleDeliveryCEP}>CALCULAR</Button>
               </DeliveryInputContent>
@@ -315,13 +323,13 @@ const HomeProductContainer = (): JSX.Element => {
               <div>
                 <p>Subtotal:</p>
                 <span>
-                  R$ {FormatedFavoriteCartValues("soma", state)?.toFixed(2)}
+                  R$ {FormatedFavoriteCartValues("sum", state)?.toFixed(2)}
                 </span>
               </div>
               <div>
                 <p>Frete:</p>
                 <span>
-                  R$ {FormatedFavoriteCartValues("frete", state)?.toFixed(2)}
+                  R$ {FormatedFavoriteCartValues("freight", state)?.toFixed(2)}
                 </span>
               </div>
               <hr />
@@ -335,7 +343,7 @@ const HomeProductContainer = (): JSX.Element => {
             <FormOfPaymentContent>
               <div>
                 <PaymentCartContent>
-                  <AiFillCreditCard /> 3X R$ {FormatedFavoriteCartValues("dividido", state)?.toFixed(2)} <br />
+                  <AiFillCreditCard /> 3X R$ {FormatedFavoriteCartValues("divided", state)?.toFixed(2)} <br />
                   s/ juros
                 </PaymentCartContent>
               </div>
@@ -343,7 +351,7 @@ const HomeProductContainer = (): JSX.Element => {
               <PaymentTicketContainer>
                   <FaBarcode />
                 <PaymentTicketContent>
-                  <PaymenteTicketTotal>R$ {FormatedFavoriteCartValues("desconto", state)?.toFixed(
+                  <PaymenteTicketTotal>R$ {FormatedFavoriteCartValues("discount", state)?.toFixed(
                     2
                   )}</PaymenteTicketTotal>
                   com desconto de 10% à vista no boleto.

@@ -10,7 +10,6 @@ const HeadModalContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: 20px; */
 
   div {
     display: flex;
@@ -34,7 +33,6 @@ const HeadModalContent = styled.div`
     color: #fff;
     padding: 10px;
 
-    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -64,6 +62,20 @@ const BodyModalContent = styled.div`
 
   h4 {
     font-size: 13px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
   }
 `
 

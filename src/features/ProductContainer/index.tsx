@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import {
@@ -54,8 +55,6 @@ const HomeProductContainer = (): JSX.Element => {
 
   const handleCheckIfHasOnCart = (productId: number) => {
     const hasProduct = Boolean(contextValue.state.find((prod) => prod.id === productId))
-
-    console.log('hasProduct', hasProduct)
     return hasProduct
   }
 
@@ -77,12 +76,12 @@ const HomeProductContainer = (): JSX.Element => {
   }
 
   const FormatedValues = (ind: string, value: number) => {
-    if (ind === 'desconto') {
+    if (ind === 'discount') {
       const num = value * 0.9
       return num.toFixed(2)
     }
 
-    if (ind === 'dividido') {
+    if (ind === 'divided') {
       const num = value / 3
       return num.toFixed(2)
     }
@@ -115,9 +114,9 @@ const HomeProductContainer = (): JSX.Element => {
               </AllRate>
               <ProductPriceValue>R$ {Product?.price.toFixed(2)}</ProductPriceValue>
               <ProductInstallments>
-                <BsFillCreditCardFill /> 3x de {FormatedValues('dividido', Product?.price)} sem juros no cartão.
+                <BsFillCreditCardFill /> 3x de {FormatedValues('divided', Product?.price)} sem juros no cartão.
               </ProductInstallments>
-              <ProductCodeValue>R$ {FormatedValues('desconto', Product?.price)}</ProductCodeValue>
+              <ProductCodeValue>R$ {FormatedValues('discount', Product?.price)}</ProductCodeValue>
               <ProductCode>
                 <FaBarcode /> à vista com 10% de desconto no boleto ou pix
               </ProductCode>

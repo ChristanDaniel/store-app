@@ -104,6 +104,7 @@ const ProductContentCart = styled.div`
 
 const ProductTitle = styled.p`
   min-width: 323px;
+  max-width: 323px;
 `;
 
 const ButtonReduce = styled.button`
@@ -268,6 +269,17 @@ const DeliveryCepContainer = styled.div`
 const DeliveryInputContent = styled.div`
   display: flex;
   min-width: 350px;
+
+  #button-frete {
+    background-color: transparent;
+    color: #778899;
+    font-size: 11px;
+    opacity: 0.9;
+    margin: 0;
+    margin-top: 7px;
+    padding: 0;
+    height: 0;
+  }
 `
 
 const DeliveryCepContent = styled.div`

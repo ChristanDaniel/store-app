@@ -21,7 +21,6 @@ const Headers = styled.header`
   box-shadow: -1px -3px 11px 2px rgba(0, 0, 0, 0.24);
 
   h1 {
-    margin-left: 2rem;
     padding: 0.25rem 0 0.25rem 2rem;
     border-left: 1px solid #3498db;
   }
@@ -178,7 +177,7 @@ const UserMouverOver = styled.div`
   }
 `;
 
-const SvgHeader = styled.div`
+const ImgHeader = styled.div`
   display: flex;
   align-items: center;
 
@@ -186,10 +185,6 @@ const SvgHeader = styled.div`
     cursor: pointer;
   }
 
-  svg {
-    height: 50px;
-    width: 50px;
-  }
 `;
 
 export {
@@ -202,5 +197,5 @@ export {
   BorderLeft,
   ButtonArrowUser,
   NumberCartFavorite,
-  SvgHeader,
+  ImgHeader,
 };
