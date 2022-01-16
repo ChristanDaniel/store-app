@@ -6,7 +6,8 @@ import { FiUser } from "react-icons/fi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiShop } from "react-icons/gi";
 
-
+import Image from "next/image";
+import LogoImg from "../../../public/IgLogo.png";
 
 import {
   Headers,
@@ -45,7 +46,7 @@ const Header = ({ onOpenModalCart }: HeaderProps): JSX.Element => {
     <>
       <Headers>
         <ImgHeader>
-
+          <Image src={LogoImg} alt='Logo Ig.Store'/>
           <h1 onClick={() => router.push("/")}>
             Ig<span>.</span>Store
           </h1>

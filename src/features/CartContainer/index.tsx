@@ -284,7 +284,9 @@ const HomeProductContainer = (): JSX.Element => {
                   />
                     {verificarCepErro === false ? (
                     <>
-                      
+                      <Button id="button-frete" onClick={() => setInputCEP('01036-970')}>
+                        Auto Complete
+                      </Button>
                     </>
                     ) : (
                     <ErrorCepContent>
