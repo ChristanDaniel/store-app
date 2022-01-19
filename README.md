@@ -39,6 +39,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 https://user-images.githubusercontent.com/80167149/150040855-f8a02319-97a8-4616-b7a9-b61b645f359e.mp4
 
+https://user-images.githubusercontent.com/80167149/150041256-1a9c1074-df18-4c0e-b1d5-0f9756e21696.mp4
+
 ### 🔗 Funcionalidades
 
 - [x] **O usuário pode fazer login com Nome e Email.**
@@ -70,6 +72,3 @@ Tudo Pronto? Agora é só acessar [`localhost:3000`](http://localhost:3000) do s
 
 ---
 Feito com 🧡 by Christian Daniel 👋🏻
-
-
-
