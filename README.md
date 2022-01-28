@@ -18,7 +18,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Styled-Components](https://styled-components.com/) <img align='left' alt="styled-components" width='35px' src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" />
 
-## Estrutura
+## 📂 Estrutura
 
 - `pages/` -> Pasta de rotas do app.
 - `public/` -> Pasta de Imagens.
@@ -36,6 +36,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - `pages/Sucess` -> página da compra finalizada com sucesso pelo cliente.
 - `pages/Product/[id].tsx` -> página de detalhes do produto.
 
+
+https://user-images.githubusercontent.com/80167149/150040855-f8a02319-97a8-4616-b7a9-b61b645f359e.mp4
+
+https://user-images.githubusercontent.com/80167149/150041256-1a9c1074-df18-4c0e-b1d5-0f9756e21696.mp4
 
 ### 🔗 Funcionalidades
 
