@@ -3,7 +3,7 @@ import { SucessMainContainer } from "./styles";
 import { ProductContainerContext } from "../ProductContainerContext";
 
 import Image from "next/image";
-import profilePic from "../../../public/PedidoConcluído.svg";
+import profilePic from "../../../public/PedidoFinalizado.png";
 import Button from "../../components/Button";
 import { useRouter } from "next/dist/client/router";
 

@@ -117,8 +117,8 @@ export function OpenModalFavoriteCart({
             {productItens &&
               productItens?.map((Prod, index) => {
                 return (
-                  <>
-                    <ProductDivContent key={Prod.id + index}>
+                  <div key={Prod.id + index.toString()}>
+                    <ProductDivContent>
                       <img src={`${Prod.image}`} alt={`${Prod.title}`} />
                       <h4>{Prod.title}</h4>
                       <AmountProductContent>
@@ -130,7 +130,7 @@ export function OpenModalFavoriteCart({
                         </button>
                       </AmountProductContent>
                     </ProductDivContent>
-                  </>
+                  </div>
                 );
               })}
           </BodyModalContent>

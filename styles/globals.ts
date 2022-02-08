@@ -46,7 +46,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .react-modal-overlay {
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
+    z-index: 11;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -67,6 +67,7 @@ export const GlobalStyle = createGlobalStyle`
     background: transparent;
 
     transition: filter 0.2s;
+    cursor: pointer;
 
     &:hover {
       filter: brightness(0.8);

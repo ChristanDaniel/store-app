@@ -88,8 +88,8 @@ const HomeContainer = (): JSX.Element => {
         <MainContent>
           {products.map((product, index) => {
             return (
-              <>
-                <MainContentDiv key={index + product.id.toString()}>
+              <div key={index + product.id.toString()}>
+                <MainContentDiv>
                   <img src={`${product.image}`} alt={`${product.title}`} />
 
                   <h3>{product.title}</h3>
@@ -120,7 +120,7 @@ const HomeContainer = (): JSX.Element => {
                     </Button>
                   </ButtonContainerBuy>
                 </MainContentDiv>
-              </>
+              </div>
             );
           })}
         </MainContent>
