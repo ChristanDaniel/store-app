@@ -15,15 +15,17 @@ const MainContent = styled.main`
 
   margin: 45px;
   gap: 20px;
+
 `;
 
-const MainContentDiv = styled.div`
-  display: flex;
+const ProductContent = styled.div`
+  min-height: 424px;
   width: 250px;
-  flex-direction: column;
   padding: 24px 18px;
-  box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  box-shadow: rgb(0 0 0 / 30%) 1px 3px 12px 0px;
 
   img {
     display: flex;
@@ -77,7 +79,7 @@ export {
   MainContainer,
   Banner,
   MainContent,
-  MainContentDiv,
+  ProductContent,
   ProdPriceValue,
   ProdPriceValueSpan,
   InstallmentAmount,

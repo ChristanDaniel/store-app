@@ -6,7 +6,9 @@ const SucessMainContainer = styled.main`
   flex-direction: column;
   align-items: center;
   color: blue;
+
   h1 {
+    margin-top: -40px;
     opacity: 0.8;
   }
 `;

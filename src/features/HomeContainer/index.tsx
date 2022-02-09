@@ -16,7 +16,7 @@ import {
   MainContainer,
   Banner,
   MainContent,
-  MainContentDiv,
+  ProductContent,
   InstallmentAmount,
   ButtonContainerBuy,
   ProdPriceValue,
@@ -89,7 +89,7 @@ const HomeContainer = (): JSX.Element => {
           {products.map((product, index) => {
             return (
               <div key={index + product.id.toString()}>
-                <MainContentDiv>
+                <ProductContent>
                   <img src={`${product.image}`} alt={`${product.title}`} />
 
                   <h3>{product.title}</h3>
@@ -119,7 +119,7 @@ const HomeContainer = (): JSX.Element => {
                       )}
                     </Button>
                   </ButtonContainerBuy>
-                </MainContentDiv>
+                </ProductContent>
               </div>
             );
           })}
